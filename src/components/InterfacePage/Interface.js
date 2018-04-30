@@ -10,7 +10,7 @@ class Interface extends Component {
     render() {
         return (
             <Paper>
-                <Grid container spacing={24}
+                <Grid container spacing={12}
                     justify="flex-start"
                     alignItems="flex-start"
                     direction="row">

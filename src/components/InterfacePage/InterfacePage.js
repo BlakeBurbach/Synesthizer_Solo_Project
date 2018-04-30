@@ -7,6 +7,7 @@ import Button from 'material-ui/Button'
 import Grid from 'material-ui/Grid'
 import Card from 'material-ui/Card'
 import Interface from './Interface.js';
+import Typography from 'material-ui/Typography'
 
 
 const mapStateToProps = state => ({
@@ -39,14 +40,10 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
+          <Typography variant="display2">
             Welcome, { this.props.user.userName }!
-          </h1>
-          <Button
-            onClick={this.logout}
-          >
+          </Typography>
+          <Button variant="raised" onClick={this.logout}>
             Log Out
           </Button>
         </div>

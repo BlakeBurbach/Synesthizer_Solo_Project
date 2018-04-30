@@ -9,24 +9,23 @@ import Divider from 'material-ui/Divider'
 class Synth1 extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "10px" }} xs={3}>
+            <Card style={{ maxWidth: "350px", padding: "20px" }} xs={3}>
                 <CardContent>
                     <Typography variant="display2">
-                        Here is the first thing
+                        Synth 1
                 </Typography>
                 </CardContent>
-                <InterfaceSlider />
-                <CardActions>
-                    <Grid container spacing={8}
-                    >
-                        <InterfaceSwitch />
-                        <InterfaceSwitch />
-                        <br />
-                        <Button variant="raised"></Button>
-                        <Button variant="raised"></Button>
-
-                    </Grid>
-                </CardActions>
+                <Grid container alignItems="center"
+                    justify="center"
+                    direction="row">
+                    <InterfaceSwitch />
+                    <InterfaceSwitch />
+                </Grid>
+                <div style={{padding:"10px"}}>
+                    <InterfaceSlider />
+                </div>
+                <Button variant="raised"></Button>
+                <Button variant="raised"></Button>
             </Card>
         )
     }
