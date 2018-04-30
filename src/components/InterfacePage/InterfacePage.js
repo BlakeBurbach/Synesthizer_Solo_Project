@@ -4,8 +4,6 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { LOGIN_ACTIONS } from '../../redux/actions/loginActions';
 import Button from 'material-ui/Button'
-import Grid from 'material-ui/Grid'
-import Card from 'material-ui/Card'
 import Interface from './Interface.js';
 import Typography from 'material-ui/Typography'
 

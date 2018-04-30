@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Paper, Grid, Button } from 'material-ui';
-import Card, { CardContent, CardActions, CardMedia } from 'material-ui/Card';
+import {Grid, Button } from 'material-ui';
+import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import InterfaceSwitch from '../../InterfaceSwitch/InterfaceSwitch';
 import InterfaceSlider from '../../InterfaceSlider/InterfaceSlider';
-import Divider from 'material-ui/Divider'
 
 class Synth2 extends Component {
     render() {

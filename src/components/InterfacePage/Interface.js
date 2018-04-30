@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, Grid, Button } from 'material-ui';
-import Card, { CardContent, CardActions, CardMedia } from 'material-ui/Card';
+import { Paper, Grid } from 'material-ui';
 import ColorDisplay from './ColorDisplay/ColorDisplay';
 import Synth1 from './InterfaceSynths/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
@@ -10,7 +9,7 @@ class Interface extends Component {
     render() {
         return (
             <Paper>
-                <Grid container spacing={12}
+                <Grid container spacing={8}
                     justify="flex-start"
                     alignItems="flex-start"
                     direction="row">
