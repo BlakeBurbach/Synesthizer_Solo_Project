@@ -3,7 +3,7 @@ import Knob from 'react-canvas-knob';
 import './index.js'
 
 class ReactKnob extends Component {
-  state = {value: 50};
+  state = {value: 10};
 
   handleChange = (newValue) => {
     this.setState({value: newValue});

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -27,17 +29,25 @@ class InfoPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
-            List of Songs
-          </p>
+          <Typography variant="display1" style={{ float: "left", paddingRight: "10px" }}>
+            Welcome, {this.props.user.userName}!
+          </Typography>
+          <Button variant="raised" onClick={this.logout} style={{ float: "right" }}>
+            Log Out
+          </Button>
         </div>
       );
     }
 
     return (
       <div>
+        <div style={{ float: "right", padding: "5px" }}>
+          {content}
+        </div>
         <Nav />
-        { content }
+        <Typography variant="display2" style={{textAlign: "center"}}>
+            List of Songs
+          </Typography>  
       </div>
     );
   }

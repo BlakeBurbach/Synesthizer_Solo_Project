@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Grid } from 'material-ui';
 import ColorDisplay from './ColorDisplay/ColorDisplay';
-import Synth1 from './InterfaceSynths/Synth1';
+import Synth1 from './InterfaceSynths/Synth1/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
 import Synth3 from './InterfaceSynths/Synth3';
 import ButtonsAndDials from './ButtonsAndDials/ButtonsAndDials'

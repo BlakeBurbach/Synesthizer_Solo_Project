@@ -5,8 +5,8 @@ import 'rc-slider/assets/index.css';
 class InterfaceSlider extends Component {
     render() {
         return (
-            <div>
-                <Slider />
+            <div style={{padding: "10px"}}>
+                <Slider defaultValue={this.props.defaultValue}/>
             </div>
         )
     }
