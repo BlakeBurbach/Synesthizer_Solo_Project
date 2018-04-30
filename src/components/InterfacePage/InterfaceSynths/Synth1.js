@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Button } from 'material-ui';
-import Card, { CardContent } from 'material-ui/Card';
+import Card, { CardContent, CardActions } from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import InterfaceSwitch from '../../InterfaceSwitch/InterfaceSwitch';
 import InterfaceSlider from '../../InterfaceSlider/InterfaceSlider';
@@ -23,6 +23,10 @@ class Synth1 extends Component {
                 <div style={{padding:"10px"}}>
                     <InterfaceSlider />
                 </div>
+                <Button variant="raised"></Button>
+                <Button variant="raised"></Button>
+                <Button variant="raised"></Button>
+                <Button variant="raised"></Button>
                 <Button variant="raised"></Button>
                 <Button variant="raised"></Button>
             </Card>

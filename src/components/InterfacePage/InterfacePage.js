@@ -38,10 +38,10 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <Typography variant="display2">
+          <Typography variant="display1" style={{float: "left", paddingRight: "10px"}}>
             Welcome, { this.props.user.userName }!
           </Typography>
-          <Button variant="raised" onClick={this.logout}>
+          <Button variant="raised" onClick={this.logout} style={{float: "right"}}>
             Log Out
           </Button>
         </div>
@@ -50,8 +50,10 @@ class UserPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <div style={{float: "right", padding: "5px"}}>
         { content }
+        </div>
+        <Nav />
         <Interface />
       </div>
     );

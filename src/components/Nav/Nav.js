@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Typography from 'material-ui/Typography'
 
 const Nav = () => (
   <div className="navbar">
@@ -7,12 +8,16 @@ const Nav = () => (
       <ul>
         <li>
           <Link to="/interface">
-            Interface
+            <Typography variant="headline">
+              Interface
+          </Typography>
           </Link>
         </li>
         <li>
           <Link to="/list">
-            List Page
+            <Typography variant="headline">
+              List Page
+            </Typography>
           </Link>
         </li>
       </ul>

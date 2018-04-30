@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Card, { CardMedia } from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography'
 
 
 class ColorDisplay extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "948px", maxHeight: "300px", padding:"20px" }}>
-                {/* <Paper>
-                    <Typography variant="display4">
-                        Here i am
+            <Card style={{ maxWidth: "930px", maxHeight: "300px", padding:"8px" }}>
+                <Paper>
+                    <Typography variant="display4" style={{textAlign: "center"}}>
+                        Sick Display
                     </Typography>
-                </Paper> */}
+                </Paper>
                 <CardMedia src="/details/img/random_particles.jpg"/>  
             </Card>
         )
