@@ -1,11 +1,10 @@
 import React from 'react';
+import Typography from 'material-ui/Typography'
 
 const Header = ({ title }) => (
-  <div className="instructions">
     <div>
-      <h1 className="lead">{ title }</h1>
+      <Typography variant="display3" gutterBottom>{ title }</Typography>
     </div>
-  </div>
 );
 
 export default Header;

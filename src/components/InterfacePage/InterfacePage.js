@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { LOGIN_ACTIONS } from '../../redux/actions/loginActions';
+import Button from 'material-ui/Button'
+import Grid from 'material-ui/Grid'
+import Card from 'material-ui/Card'
+import Interface from './Interface.js';
+
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InfoPage extends Component {
+class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: USER_ACTIONS.FETCH_USER
@@ -21,15 +26,29 @@ class InfoPage extends Component {
     }
   }
 
+  logout = () => {
+    this.props.dispatch({
+      type: LOGIN_ACTIONS.LOGOUT
+    });
+    // this.props.history.push('home');
+  }
+
   render() {
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
-            Info Page
-          </p>
+          <h1
+            id="welcome"
+          >
+            Welcome, { this.props.user.userName }!
+          </h1>
+          <Button
+            onClick={this.logout}
+          >
+            Log Out
+          </Button>
         </div>
       );
     }
@@ -38,10 +57,12 @@ class InfoPage extends Component {
       <div>
         <Nav />
         { content }
+        <Interface />
       </div>
     );
   }
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InfoPage);
+export default connect(mapStateToProps)(UserPage);
+

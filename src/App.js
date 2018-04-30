@@ -9,14 +9,14 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import InterfacePage from './components/InterfacePage/InterfacePage';
+import ListPage from './components/ListPage/ListPage';
 
 import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Synesthizer" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -29,12 +29,12 @@ const App = () => (
           component={RegisterPage}
         />
         <Route
-          path="/user"
-          component={UserPage}
+          path="/interface"
+          component={InterfacePage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/list"
+          component={ListPage}
         />
         {/* OTHERWISE no path */}
         <Route
