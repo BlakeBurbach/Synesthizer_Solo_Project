@@ -6,29 +6,24 @@ import Synth1 from './InterfaceSynths/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
 import Synth3 from './InterfaceSynths/Synth3';
 
-const styles = {
-    media: {
-        height: 0,
-        paddingTop: '56.25%'
-    }
-}
-
 class Interface extends Component {
     render() {
         return (
             <Paper>
-                <Grid container spacing={0}
-                    justify="center">
-                    <Grid item>
+                <Grid container spacing={24}
+                    justify="flex-start"
+                    alignItems="flex-start"
+                    direction="row">
+                    <Grid item xs={12}>
                         <ColorDisplay />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={3}>
                         <Synth1 />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={3}>
                         <Synth2 />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={3}>
                         <Synth3 />
                     </Grid>
                 </Grid>

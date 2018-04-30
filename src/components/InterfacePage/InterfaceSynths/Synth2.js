@@ -10,7 +10,7 @@ import Divider from 'material-ui/Divider'
 class Synth2 extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "10px" }}>
+            <Card style={{ maxWidth: "350px", padding: "10px" }} xs={3}>
                 <CardContent>
                     <Typography variant="display2">
                         Here is the second thing

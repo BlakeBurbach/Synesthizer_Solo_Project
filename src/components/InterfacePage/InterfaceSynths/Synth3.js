@@ -9,7 +9,7 @@ import { typography } from 'material-ui/styles';
 class Synth3 extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "375px", padding: "20px" }}>
+            <Card style={{ maxWidth: "375px", padding: "20px" }} xs={3}>
                 <CardContent>
                     <Typography variant="display2">
                         Synth 3
