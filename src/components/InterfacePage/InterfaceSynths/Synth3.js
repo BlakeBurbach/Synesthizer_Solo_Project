@@ -24,12 +24,8 @@ class Synth3 extends Component {
                 <div style={{ padding: "10px" }}>
                     <InterfaceSlider />
                 </div>
-                <Button variant="raised"></Button>
-                <Button variant="raised"></Button>
-                <Button variant="raised"></Button>
-                <Button variant="raised"></Button>
-                <Button variant="raised"></Button>
-                <Button variant="raised"></Button>
+                <Button variant="raised">x</Button>
+                <Button variant="raised">x</Button>
             </Card>
         )
     }

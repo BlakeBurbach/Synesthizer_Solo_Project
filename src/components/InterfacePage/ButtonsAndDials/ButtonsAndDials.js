@@ -10,8 +10,8 @@ class ButtonsAndDials extends Component {
         return (
             <Card style={{ maxWidth: "350px", maxHeight: "500px", padding: "20px" }} xs={3}>
                 <CardActions>
-                    <Button variant="raised"></Button>
-                    <Button variant="raised"></Button>
+                    <Button variant="raised">x</Button>
+                    <Button variant="raised">x</Button>
                 </CardActions>
                 <ReactKnob />
                 <ReactKnob />
