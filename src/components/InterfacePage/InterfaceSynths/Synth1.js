@@ -75,15 +75,21 @@ class Synth1 extends Component {
 
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "20px" }} xs={3}>
+            <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <CardContent>
-                    <Typography variant="display2">
+                    <Typography variant="headline">
                         Synth 1
                     </Typography>
                 </CardContent>
                 <div style={{ padding: "10px" }}>
+                    <Typography variant="title">
+                        Delay:
+                    </Typography>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    <Knob  min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
+                    <Typography variant="title">
+                        Volume:
+                    </Typography>
+                    <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
                 <Button variant="raised" onClick={() => this.handleChordChange(["C3", "E3", "G3", "B3"])}>CMaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>

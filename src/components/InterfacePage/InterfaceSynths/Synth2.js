@@ -42,12 +42,15 @@ class Synth2 extends Component {
     } // end handleVolume
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "20px" }} xs={3}>
+            <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <CardContent>
-                    <Typography variant="display2">
+                    <Typography variant="headline">
                         Synth 2
                     </Typography>
                 </CardContent>
+                <Typography variant="title">
+                    Volume:
+                </Typography>
                 <Knob min={-60} max={10} step={1} value={this.state.drumVolume} onChange={this.handleVolume} />
                 <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
             </Card>

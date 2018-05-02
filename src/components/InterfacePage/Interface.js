@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Grid } from 'material-ui';
-import Card, { CardContent } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import { Typography } from 'material-ui';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import Knob from 'react-canvas-knob';
 import ColorDisplay from './ColorDisplay/ColorDisplay';
 import Synth1 from './InterfaceSynths/Synth1';
@@ -12,13 +10,16 @@ import Synth3 from './InterfaceSynths/Synth3';
 import Tone from 'tone';
 
 class Interface extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
-            tempo: 120
+            Synth1: Synth1,
+            Synth2: Synth2,
+            tempo: 120,
+            volume: 0
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         Tone.Transport.start();
     }
 
@@ -28,7 +29,14 @@ class Interface extends Component {
             tempo: value
         })
     }
+    handleVolume = (value) => {
+        Tone.Master.volume.rampTo(value)
+        this.setState({
+            volume: value
+        })
+    }
     render() {
+        console.log(this.state.Synth1)
         return (
             <Paper>
                 <Grid container spacing={8}
@@ -39,7 +47,7 @@ class Interface extends Component {
                         <ColorDisplay />
                     </Grid>
                     <Grid item xs={3}>
-                        <Synth1 />
+                        <Synth1 Synth1={this.state.Synth1} voleum />
                     </Grid>
                     <Grid item xs={3}>
                         <Synth2 />
@@ -47,13 +55,27 @@ class Interface extends Component {
                     <Grid item xs={3}>
                         <Synth3 />
                     </Grid>
-                    <Grid item xs={3}>
-                        <Card>
-                            <Typography variant="display2">
+                    <Grid item xs={3} alignItems="center" direction="row">
+                        <Card style={{ maxWidth: "350px", padding: "15px" }}>
+                            <Typography variant="headline">
                                 Master Control
                             </Typography>
+                            <Typography variant="title">
+                                Tempo:
+                            </Typography>
                             <Knob min={60} max={180} step={1} value={this.state.tempo} onChange={this.handleTempo} />
-                        </Card>    
+                            <Typography variant="title">
+                                Volume:
+                            </Typography>
+                            <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
+                        </Card>
+                    </Grid>
+                    <Grid xs={12}>
+                        <Paper>
+                            <Typography variant="display1">
+                                Sequencer
+                            </Typography>
+                        </Paper>
                     </Grid>
                 </Grid>
             </Paper>

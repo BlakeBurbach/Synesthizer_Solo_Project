@@ -47,7 +47,7 @@ class UserPage extends Component {
         </div>
       );
     }
-
+    
     return (
       <div>
         <div style={{float: "right", padding: "5px"}}>

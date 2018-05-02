@@ -8,9 +8,9 @@ import 'rc-slider/assets/index.css';
 class Synth3 extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "20px" }} xs={3}>
+            <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <CardContent>
-                    <Typography variant="display2">
+                    <Typography variant="headline">
                         Synth 3
                 </Typography>
                 </CardContent>
