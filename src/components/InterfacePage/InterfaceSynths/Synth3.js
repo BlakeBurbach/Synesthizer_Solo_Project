@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Button } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
-import InterfaceSwitch from '../../InterfaceSwitch/InterfaceSwitch';
-import InterfaceSlider from '../../InterfaceSlider/InterfaceSlider';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 class Synth3 extends Component {
     render() {
@@ -14,15 +14,8 @@ class Synth3 extends Component {
                         Synth 3
                 </Typography>
                 </CardContent>
-                <Grid container
-                    alignItems="center"
-                    justify="center"
-                    direction="row">
-                    <InterfaceSwitch />
-                    <InterfaceSwitch />
-                </Grid>
                 <div style={{ padding: "10px" }}>
-                    <InterfaceSlider />
+                    <Slider />
                 </div>
                 <Button variant="raised">x</Button>
                 <Button variant="raised">x</Button>

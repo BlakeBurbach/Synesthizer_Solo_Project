@@ -4,7 +4,7 @@ import ColorDisplay from './ColorDisplay/ColorDisplay';
 import Synth1 from './InterfaceSynths/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
 import Synth3 from './InterfaceSynths/Synth3';
-import ButtonsAndDials from './ButtonsAndDials/ButtonsAndDials'
+// import ButtonsAndDials from './ButtonsAndDials/ButtonsAndDials'
 import Tone from 'tone';
 
 class Interface extends Component {
@@ -25,7 +25,7 @@ class Interface extends Component {
         return (
             <Paper>
                 <Grid container spacing={8}
-                    justify="space-around"
+                    justify="flex-start"
                     alignItems="flex-start"
                     direction="row">
                     <Grid item xs={12}>
@@ -40,9 +40,7 @@ class Interface extends Component {
                     <Grid item xs={3}>
                         <Synth3 />
                     </Grid>
-                    <Grid item xs={3}>
-                        <ButtonsAndDials />
-                    </Grid>
+
                 </Grid>
             </Paper>
 

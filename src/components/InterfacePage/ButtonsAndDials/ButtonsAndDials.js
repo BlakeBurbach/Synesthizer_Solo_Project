@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Card from 'material-ui/Card';
-import ReactKnob from '../../ReactKnob/ReactKnob';
+import Card, { CardActions } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import { CardActions } from 'material-ui';
-import InterfaceSlider from '../../InterfaceSlider/InterfaceSlider';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import Knob from 'react-canvas-knob';
 
 class ButtonsAndDials extends Component {
     render() {
@@ -13,10 +13,10 @@ class ButtonsAndDials extends Component {
                     <Button variant="raised">x</Button>
                     <Button variant="raised">x</Button>
                 </CardActions>
-                <ReactKnob />
-                <ReactKnob />
-                <InterfaceSlider />
-                <InterfaceSlider />
+                <Knob onChage={this.handleChange}/>
+                <Knob onChange={this.handleChange}/>
+                <Slider onChange={this.handleChange}/>
+                <Slider onChange={this.handleChange}/>
             </Card>
         )
     }

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {Grid, Button } from 'material-ui';
+import { Button } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
-import InterfaceSwitch from '../../InterfaceSwitch/InterfaceSwitch';
-import InterfaceSlider from '../../InterfaceSlider/InterfaceSlider';
 import Tone from 'tone';
 
 class Synth2 extends Component {
@@ -43,15 +41,6 @@ class Synth2 extends Component {
                         Synth 2
                 </Typography>
                 </CardContent>
-                {/* <Grid container alignItems="center"
-                    justify="center"
-                    direction="row">
-                    <InterfaceSwitch />
-                    <InterfaceSwitch />
-                </Grid> */}
-                {/* <div style={{ padding: "10px" }}>
-                    <InterfaceSlider />
-                </div> */}
                 <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
             </Card>
         )
