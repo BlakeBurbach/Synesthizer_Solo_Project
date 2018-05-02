@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Button } from 'material-ui';
+import { Button } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import Slider from 'rc-slider';
