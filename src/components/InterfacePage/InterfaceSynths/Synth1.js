@@ -7,7 +7,7 @@ import Tone from 'tone';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Knob from 'react-canvas-knob';
-// import './index.js'
+
 
 class Synth1 extends Component {
     constructor(){
@@ -17,17 +17,19 @@ class Synth1 extends Component {
             delay: {},
             loop: {},
             delayTime: 0,
-            frequency: 200
+            volume: -6,
+            looping: false
         }
     }
     
+// ["C3", "E3", "G3"]
 
     componentDidMount(){
         //create the synth, delay, and loop objects and set them as their correlating state objects
         let synth = new Tone.PolySynth(4, Tone.Synth);
         let delay = new Tone.FeedbackDelay(0, 0.7);
         let loop = new Tone.Loop(function (time) {
-            synth.triggerAttackRelease(["C3", "E3", "A3", "C4"], "8n", time);
+            synth.triggerAttackRelease(["C3", "E3", "G3"], "8n", time);
         }, "4n");
         //route delay to Master output and then connect delay to synth output chain 
         // that will go to master. 
@@ -41,24 +43,31 @@ class Synth1 extends Component {
         })
     }
 
-    startLoop = (loop) => {
-        this.state.loop.start();
+    handleLoop = () => {
+        this.setState({
+            looping: !this.state.looping
+        })
+        if(this.state.looping === false){
+            this.state.loop.start();
+        } else {
+            this.state.loop.stop();
+        }
+        
     }
-    stopLoop = (loop) => {
-        this.state.loop.stop();
-    }
+    // stopLoop = (loop) => {
+    //     this.state.loop.stop();
+    // }
     handleDelay = (value) => {
         this.state.delay.delayTime.rampTo(value);
         this.setState({
             delayTime: value
         })
     }
-    handleFreq = (value) => {
-        this.state.synth.detune.rampTo(value);
+    handleVolume = (value) => {
+        this.state.synth.volume.rampTo(value);
         this.setState({
-            frequency: value
+            volume: value
         })
-        this.state.synth.triggerAttackRelease(this.state.frequency)
     }
 
     render() {
@@ -69,18 +78,12 @@ class Synth1 extends Component {
                         Synth 1
                     </Typography>
                 </CardContent>
-                {/* <Grid container alignItems="center"
-                    justify="center"
-                    direction="row">
-                    <InterfaceSwitch />
-                    <InterfaceSwitch />
-                </Grid> */}
                 <div style={{ padding: "10px" }}>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay}/>
-                    <Knob min={200} max={210} step={0.5} value={this.state.frequency} onChange={this.handleFreq}/>
+                    <Knob min={-60} max={0} step={1} value={this.state.volume} onChange={this.handleVolume}/>
                 </div>
-                <Button variant="raised" onClick={() => this.startLoop(this.state.loop)}>Start</Button>
-                <Button variant="raised" onClick={() => this.stopLoop(this.state.loop)}>Stop</Button>
+                <Button variant="raised" onClick={this.handleLoop}>Loop</Button>
+                {/* <Button variant="raised" onClick={() => this.stopLoop(this.state.loop)}>Stop</Button> */}
 
             </Card>
         )
