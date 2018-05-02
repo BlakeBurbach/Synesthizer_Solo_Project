@@ -10,9 +10,7 @@ import Knob from 'react-canvas-knob';
 //create the synth, delay, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
-let loop = new Tone.Loop(function (time) {
-    synth.triggerAttackRelease(["C3", "E3", "G3", "B3"], "8n", time);
-}, "4n");
+let loop;
 //route delay to Master output and then connect delay to synth output chain 
 // that will go to master. 
 delay.toMaster();
@@ -34,8 +32,7 @@ class Synth1 extends Component {
     // ["F3", "A3", "C4", "E4"] Fmaj7
     // ["E3", "G3", "B4", "D4"] Emin7
 
-    componentDidMount() {
-    }
+
     handleChordChange = (chord) => {
         if (this.state.looping) {
             loop.stop()

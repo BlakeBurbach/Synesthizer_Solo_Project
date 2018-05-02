@@ -7,7 +7,7 @@ import Typography from 'material-ui/Typography'
 class ColorDisplay extends Component {
     render() {
         return (
-            <Card style={{ maxWidth: "930px", maxHeight: "300px", padding:"8px" }}>
+            <Card style={{ maxHeight: "300px", padding:"8px" }}>
                 <Paper>
                     <Typography variant="display4" style={{textAlign: "center"}}>
                         Sick Display
