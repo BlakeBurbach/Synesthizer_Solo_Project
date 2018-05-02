@@ -18,7 +18,8 @@ class Synth1 extends Component {
             loop: {},
             delayTime: 0,
             volume: -6,
-            looping: false
+            looping: false, 
+            chord: ["C3", "E3", "G3"]
         }
     }
     
@@ -42,7 +43,7 @@ class Synth1 extends Component {
             loop: loop,
         })
     }
-
+    // click handler function to start and stop loop based on whether or not looping is true or false
     handleLoop = () => {
         this.setState({
             looping: !this.state.looping
@@ -51,24 +52,24 @@ class Synth1 extends Component {
             this.state.loop.start();
         } else {
             this.state.loop.stop();
-        }
-        
-    }
-    // stopLoop = (loop) => {
-    //     this.state.loop.stop();
-    // }
+        } // end if
+    } // end handleLoop
+
+    // onChange function to deal with delay time value with a slider
     handleDelay = (value) => {
         this.state.delay.delayTime.rampTo(value);
         this.setState({
             delayTime: value
         })
-    }
+    } // end handleDelay
+
+    // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         this.state.synth.volume.rampTo(value);
         this.setState({
             volume: value
-        })
-    }
+        }) // end setState
+    } // end handleVolume
 
     render() {
         return (
@@ -80,11 +81,9 @@ class Synth1 extends Component {
                 </CardContent>
                 <div style={{ padding: "10px" }}>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay}/>
-                    <Knob min={-60} max={0} step={1} value={this.state.volume} onChange={this.handleVolume}/>
+                    <Knob min={-60} max={5} step={1} value={this.state.volume} onChange={this.handleVolume}/>
                 </div>
                 <Button variant="raised" onClick={this.handleLoop}>Loop</Button>
-                {/* <Button variant="raised" onClick={() => this.stopLoop(this.state.loop)}>Stop</Button> */}
-
             </Card>
         )
     }
