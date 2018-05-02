@@ -86,7 +86,7 @@ class Synth1 extends Component {
                 </CardContent>
                 <div style={{ padding: "10px" }}>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    <Knob min={-60} max={5} step={1} value={this.state.volume} onChange={this.handleVolume} />
+                    <Knob  min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
                 <Button variant="raised" onClick={() => this.handleChordChange(["C3", "E3", "G3", "B3"])}>CMaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>
