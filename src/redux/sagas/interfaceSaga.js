@@ -5,6 +5,7 @@ function* interfaceSaga() {
     yield takeEvery('POST_ALL_SYNTH_PARAMS', postAllSynthParams);
     yield takeEvery('FETCH_ALL_CREATION_DATA', fetchAllCreationData);
     yield takeEvery('DELETE_CREATION_OBJECT', deleteCreationObject);
+    yield takeEvery('UPDATE_CREATION_TITLE', updateCreationTitle);
 }
 
 // Saga that handles axios POST route for sending all interface data to database
@@ -46,5 +47,16 @@ function* deleteCreationObject(action){
         console.log('ERROR with deleteCreationObject', error);
     } // end try and catch
 } // end deleteCreationObject
+
+function* updateCreationTitle(action){
+    try{
+        yield call(axios.put, `/api/creation/${action.payload._id}`, action.payload);
+        yield put({
+            type: 'FETCH_ALL_CREATION_DATA'
+        })
+    } catch (error) {
+        console.log('updateCreationTitle ERROR', error);
+    }
+}
 
 export default interfaceSaga;

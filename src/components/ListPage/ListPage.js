@@ -32,11 +32,19 @@ class InfoPage extends Component {
     })
   }
 
+  updateCreationTitle = (creationObject) => {
+    console.log('clicking edit', creationObject._id);
+    this.props.dispatch({
+      type: 'UPDATE_CREATION_TITLE', 
+      payload: creationObject
+    })
+  }
+
 
   render() {
 
     let creationListItems = this.props.state.synthInterface.setupListPage.map((creationObject) => {
-      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation}/>)
+      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation} updateCreationTitle={this.updateCreationTitle}/>)
     })
     let content = null;
 
