@@ -13,6 +13,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+// const SynthInterfaceRouter = require('./routes.synth_interface.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+// app.use('/api/synth_interface', SynthInterfaceRouter);
 
 // Serve static files
 app.use(express.static('build'));
