@@ -31,6 +31,7 @@ router.post('/', (req, res) => {
                 console.log('ERROR mongodb creation POST route', err);
                 res.sendStatus(500);
             } else {
+                console.log('creation POST route SUCCESS', savedCreation);
                 res.sendStatus(200);
             } // end if error
         }); // end creationToAdd.save
@@ -47,6 +48,7 @@ router.get('/', (req, res)=>{
                 console.log('ERROR mongodb creation GET route', err);
                 res.sendStatus(500);
             } else {
+                console.log('creation GET route SUCCESS', foundCreations);
                 res.send(foundCreations);
             } // end if error
         }); // end Creation.find
@@ -54,5 +56,22 @@ router.get('/', (req, res)=>{
         res.sendStatus(403);
     } // end if isAuthenticated
 }); // end router GET
+
+router.delete('/:id', (req, res)=> {
+    if (req.isAuthenticated()){
+        const creationObjectId = req.params.id;
+        Creation.findByIdAndRemove(creationObjectId, (err, deletedCreationObject)=> {
+            if(err){
+                console.log('ERROR mongodb creation DELETE route', err);
+                res.sendStatus(500);
+            } else {
+                console.log('DELETE SUCCESS', deletedCreationObject);
+                res.sendStatus(200);
+            } // end if error
+        }); // end Creation.findByIdAndRemove
+    } else {
+        res.sendStatus(403);
+    } // end if isAuthenticated
+}); // end router DELETE
 
 module.exports = router;
