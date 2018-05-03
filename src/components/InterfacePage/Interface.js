@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Paper, Grid, TextField } from 'material-ui';
+import { Button, Paper, Grid } from 'material-ui';
 import Card from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import Knob from 'react-canvas-knob';
@@ -59,7 +59,7 @@ class Interface extends Component {
 
     handleSaveClick = () => {
         this.props.dispatch({
-            type: 'GET_ALL_SYNTH_PARAMS',
+            type: 'POST_ALL_SYNTH_PARAMS',
             payload: [
                 this.props.state.synthInterface.synth1,
                 this.props.state.synthInterface.synth2,
