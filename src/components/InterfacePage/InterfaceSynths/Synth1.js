@@ -10,7 +10,7 @@ import Knob from 'react-canvas-knob';
 
 const mapStateToProps = state => ({
     state
-  });
+});
 //create the synth, delay, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
@@ -31,12 +31,6 @@ class Synth1 extends Component {
         }
     }
 
-    // ["C3", "E3", "G3", "B3"] CMaj7
-    // ["D3", "F3", "A3", "C3"] Dmin7
-    // ["F3", "A3", "C4", "E4"] Fmaj7
-    // ["E3", "G3", "B4", "D4"] Emin7
-
-
     handleChordChange = (chord) => {
         if (this.state.looping) {
             loop.stop()
@@ -47,6 +41,10 @@ class Synth1 extends Component {
             loop = new Tone.Loop(function (time) {
                 synth.triggerAttackRelease(chord, "8n", time)
             }, "4n");
+            this.props.dispatch({
+                type: 'SYNTH_ONE_STUFF',
+                payload: this.state
+            })
         } else {
             this.setState({
                 looping: !this.state.looping
@@ -55,6 +53,10 @@ class Synth1 extends Component {
                 synth.triggerAttackRelease(chord, "8n", time)
             }, "4n");
             loop.start()
+            this.props.dispatch({
+                type: 'SYNTH_ONE_STUFF',
+                payload: this.state
+            })
         }// end if
         // console.log(chord);
     }
@@ -66,6 +68,10 @@ class Synth1 extends Component {
         this.setState({
             delayTime: value
         })
+        this.props.dispatch({
+            type: 'SYNTH_ONE_STUFF',
+            payload: this.state
+        })
     } // end handleDelay
 
     // onChange function to deal with volume of synth with a dial component
@@ -75,6 +81,10 @@ class Synth1 extends Component {
         this.setState({
             volume: value
         }) // end setState
+        this.props.dispatch({
+            type: 'SYNTH_ONE_STUFF',
+            payload: this.state
+        })
     } // end handleVolume
 
     render() {

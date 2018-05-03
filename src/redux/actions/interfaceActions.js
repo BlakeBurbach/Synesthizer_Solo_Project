@@ -1,0 +1,3 @@
+export const INTERFACE_ACTIONS = {
+    SYNTH_ONE_STUFF: 'SYNTH_ONE_STUFF'
+}
