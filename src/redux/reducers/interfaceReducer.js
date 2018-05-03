@@ -36,19 +36,21 @@ const interfaceMasterControl = (state = {}, action) => {
   } // end switch
 } // end interfaceMasterControl reducer
 
-// const getAllSynthParams = (state = {}, action) => {
-//   switch (action.type) {
-//     case INTERFACE_ACTIONS.FETCH_ALL_SYNTH_PARAMS_FROM_REDUX:
-//       console.log('FETCH_ALL_SYNTH_PARAMS_FROM_REDUX', action.paylod);
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// }
+// setupListPage reducer will take in the creationObjectResponse data from the
+// fetchAllCreationData get request and control the state of the List Page of creations
+const setupListPage = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_LIST_PAGE':
+      return action.payload
+    default:
+      return state
+  } // end switch
+} // end setupListPage
 
 export default combineReducers({
   synth1,
   synth2,
   interfaceMasterControl,
+  setupListPage
   // getAllSynthParams
 })  

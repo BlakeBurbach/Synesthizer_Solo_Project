@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import { Grid } from 'material-ui';
+import CreationObject from './CreationObject';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
   user: state.user,
+  state
 });
 
 class InfoPage extends Component {
+
   componentDidMount() {
+    // if (!this.props.user.isLoading && this.props.user.userName === null) {
+    //   this.props.history.push('home');
+    // }
     this.props.dispatch({
       type: USER_ACTIONS.FETCH_USER && 'FETCH_ALL_CREATION_DATA'
     });
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
 
   render() {
+
+    let creationListItems = this.props.state.synthInterface.setupListPage.map((creationObject) => {
+      return (<CreationObject key={creationObject._id} creationObject={creationObject} />)
+    })
     let content = null;
 
     if (this.props.user.userName) {
@@ -45,9 +51,12 @@ class InfoPage extends Component {
           {content}
         </div>
         <Nav />
-        <Typography variant="display2" style={{textAlign: "center"}}>
-            List of Creations
-          </Typography>  
+        <Typography variant="display2" style={{ textAlign: "center" }}>
+          List of Creations
+        </Typography>
+        <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+          {creationListItems}
+        </Grid>
       </div>
     );
   }
