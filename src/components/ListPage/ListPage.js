@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 class InfoPage extends Component {
   componentDidMount() {
     this.props.dispatch({
-      type: USER_ACTIONS.FETCH_USER
+      type: USER_ACTIONS.FETCH_USER && 'FETCH_ALL_CREATION_DATA'
     });
   }
 
@@ -46,7 +46,7 @@ class InfoPage extends Component {
         </div>
         <Nav />
         <Typography variant="display2" style={{textAlign: "center"}}>
-            List of Songs
+            List of Creations
           </Typography>  
       </div>
     );

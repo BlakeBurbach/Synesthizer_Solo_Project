@@ -14,7 +14,7 @@ const creationSchema = new Schema({
 // the variable that will be used to declare new instances of the Creation schema
 const Creation = mongoose.model('Creation', creationSchema);
 
-// post ROUTE to send new Creation object from client
+// POST function to send new Creation object from client
 router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('creation POST route', req.body);
@@ -31,10 +31,26 @@ router.post('/', (req, res) => {
             } else {
                 res.sendStatus(200);
             } // end if error
-        });
+        }); // end creationToAdd.save
     } else {
         res.sendStatus(403);
-    } // end if saved
+    } // end if isAuthenticated
 }); // end router POST
+
+// GET function to retrieve all Creation objects from database
+router.get('/', (req, res)=>{
+    if (req.isAuthenticated()){
+        Creation.find({}, (err, foundCreations)=>{
+            if (err){
+                console.log('ERROR mongodb creation GET route', err);
+                res.sendStatus(500);
+            } else {
+                res.send(foundCreations);
+            } // end if error
+        }); // end Creation.find
+    } else {
+        res.sendStatus(403);
+    } // end if isAuthenticated
+}); // end router GET
 
 module.exports = router;
