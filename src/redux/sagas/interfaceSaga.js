@@ -8,7 +8,7 @@ function* interfaceSaga() {
 function* postAllSynthParams(action) {
     yield console.log('postAllSynthParams', action.payload);
     try {
-        yield call(axios.post, '/api/synth_interface', action.payload);
+        yield call(axios.post, '/api/creation', action.payload);
     } catch (error) {
         alert('Something went wrong trying to save!');
         console.log('ERROR with postAllSynthParams', error);
