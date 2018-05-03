@@ -5,6 +5,11 @@ import { Delete } from 'material-ui-icons';
 
 
 class CreationObject extends Component {
+    
+    handleDeleteClick = () => {
+        this.props.deleteCreation(this.props.creationObject)
+    }
+
     render() {
         return (
             <Grid item xs={6} sm={12}>
@@ -17,7 +22,7 @@ class CreationObject extends Component {
                         tempo: {this.props.creationObject.master_control_params.tempo},
                         volume: {this.props.creationObject.master_control_params.volume}
                     </CardContent>
-                    <Button>
+                    <Button onClick={this.handleDeleteClick}>
                         <Delete/>
                     </Button>
                 </Card>

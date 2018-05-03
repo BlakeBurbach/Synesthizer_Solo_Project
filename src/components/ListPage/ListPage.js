@@ -24,11 +24,19 @@ class InfoPage extends Component {
     });
   }
 
+  deleteCreation = (creationObject) => {
+    console.log('clicking delete', creationObject._id);
+    this.props.dispatch({
+      type: 'DELETE_CREATION_OBJECT',
+      payload: creationObject
+    })
+  }
+
 
   render() {
 
     let creationListItems = this.props.state.synthInterface.setupListPage.map((creationObject) => {
-      return (<CreationObject key={creationObject._id} creationObject={creationObject} />)
+      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation}/>)
     })
     let content = null;
 
