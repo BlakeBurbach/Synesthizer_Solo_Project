@@ -50,13 +50,7 @@ class Interface extends Component {
             payload: this.state
         })
     }
-
-    handleChange = songTitle => event => {
-        this.setState({
-            [songTitle]: event.target.value,
-        });
-    };
-
+    
     handleSaveClick = () => {
         this.props.dispatch({
             type: 'POST_ALL_SYNTH_PARAMS',
