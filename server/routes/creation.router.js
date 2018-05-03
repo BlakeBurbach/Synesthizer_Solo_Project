@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // create a new creationSchema and define the properties
 const creationSchema = new Schema({
     user_id: { type: String, required: true },
-    username: {type: String },
+    username: { type: String },
     synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: Array },
     synth2_params: { drumVolume: Number, looping: Boolean },
     master_control_params: { songTile: String, tempo: Number, volume: Number }
@@ -65,7 +65,7 @@ router.delete('/:id', (req, res)=> {
                 console.log('ERROR mongodb creation DELETE route', err);
                 res.sendStatus(500);
             } else {
-                console.log('DELETE SUCCESS', deletedCreationObject);
+                console.log('creation DELETE route SUCCESS', deletedCreationObject);
                 res.sendStatus(200);
             } // end if error
         }); // end Creation.findByIdAndRemove
@@ -73,5 +73,23 @@ router.delete('/:id', (req, res)=> {
         res.sendStatus(403);
     } // end if isAuthenticated
 }); // end router DELETE
+
+router.put('/:id', (req, res)=> {
+    if(req.isAuthenticated()){
+        const creationObjectId = req.params.id;
+        const update = req.body;
+        Creation.findByIdAndUpdate(creationObjectId, {$push:{ creationTitle: update }}, {new: true}, (err, updatedCreationObject)=>{
+            if(err){
+                console.log('ERROR creation PUT route', err);
+                res.sendStatus(500);
+            } else {
+                console.log('creation PUT route SUCCESS');
+                res.sendStatus(200);
+            } // end if error
+        }); // end Creation.findByIdAndUpdate
+    } else {
+        res.sendStatus(403);
+    } // end if isAuthenticated
+}); // end router PUT
 
 module.exports = router;
