@@ -30,7 +30,7 @@ class Synth1 extends Component {
             chord: []
         }
     }
-
+    
     handleChordChange = (chord) => {
         if (this.state.looping) {
             loop.stop()
@@ -109,26 +109,6 @@ class Synth1 extends Component {
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["F3", "A3", "C4", "E4"])}>Fmaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["E3", "G3", "B4", "D4"])}>Emin7</Button>
-                {/* <FormControl component="fieldset" required className={classes.formControl}>
-          <FormLabel component="legend">Gender</FormLabel>
-          <RadioGroup
-            aria-label="gender"
-            name="gender1"
-            className={classes.group}
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <FormControlLabel value="female" control={<Radio />} label="Female" />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
-            <FormControlLabel
-              value="disabled"
-              disabled
-              control={<Radio />}
-              label="(Disabled option)"
-            />
-          </RadioGroup>
-        </FormControl> */}
             </Card>
         )
     }

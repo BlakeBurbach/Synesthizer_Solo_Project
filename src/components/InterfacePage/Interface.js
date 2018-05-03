@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Paper, Grid } from 'material-ui';
+import { Button, Paper, Grid } from 'material-ui';
 import Card from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import Knob from 'react-canvas-knob';
@@ -25,6 +25,9 @@ class Interface extends Component {
     componentDidMount() {
         Tone.Transport.start();
     }
+    componentDidUpdate(){
+        console.log(this.props.state.synthInterface)
+    }
 
     handleTempo = (value) => {
         Tone.Transport.bpm.rampTo(value);
@@ -46,6 +49,13 @@ class Interface extends Component {
             payload: this.state
         })
     }
+
+    handleSaveClick = () => {
+        this.props.dispatch({
+            type: 'GET_ALL_SYNTH_PARAMS',
+            payload: [this.props.state.synthInterface.synth1, this.props.state.synthInterface.synth2, this.props.state.synthInterface.interfaceMasterControl]
+        })
+    }
     render() {
         return (
             <Paper>
@@ -57,7 +67,7 @@ class Interface extends Component {
                         <ColorDisplay />
                     </Grid>
                     <Grid item xs={3}>
-                        <Synth1 Synth1={this.state.Synth1} voleum />
+                        <Synth1 />
                     </Grid>
                     <Grid item xs={3}>
                         <Synth2 />
@@ -78,6 +88,7 @@ class Interface extends Component {
                                 Volume:
                             </Typography>
                             <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
+                            <Button variant="raised" onClick={this.handleSaveClick}>SAVE</Button>
                         </Card>
                     </Grid>
                     <Grid item xs={12}>
@@ -89,7 +100,6 @@ class Interface extends Component {
                     </Grid>
                 </Grid>
             </Paper>
-
         )
     }
 }
