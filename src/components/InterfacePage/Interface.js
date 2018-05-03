@@ -36,7 +36,6 @@ class Interface extends Component {
         })
     }
     render() {
-        console.log(this.state.Synth1)
         return (
             <Paper>
                 <Grid container spacing={8}
@@ -55,7 +54,7 @@ class Interface extends Component {
                     <Grid item xs={3}>
                         <Synth3 />
                     </Grid>
-                    <Grid item xs={3} alignItems="center" direction="row">
+                    <Grid item xs={3}>
                         <Card style={{ maxWidth: "350px", padding: "15px" }}>
                             <Typography variant="headline">
                                 Master Control
@@ -70,7 +69,7 @@ class Interface extends Component {
                             <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                         </Card>
                     </Grid>
-                    <Grid xs={12}>
+                    <Grid item xs={12}>
                         <Paper>
                             <Typography variant="display1">
                                 Sequencer

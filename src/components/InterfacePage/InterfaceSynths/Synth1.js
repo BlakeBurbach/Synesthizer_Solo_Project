@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
@@ -7,6 +8,9 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Knob from 'react-canvas-knob';
 
+const mapStateToProps = state => ({
+    state
+  });
 //create the synth, delay, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
@@ -95,9 +99,29 @@ class Synth1 extends Component {
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["F3", "A3", "C4", "E4"])}>Fmaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["E3", "G3", "B4", "D4"])}>Emin7</Button>
+                {/* <FormControl component="fieldset" required className={classes.formControl}>
+          <FormLabel component="legend">Gender</FormLabel>
+          <RadioGroup
+            aria-label="gender"
+            name="gender1"
+            className={classes.group}
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <FormControlLabel value="female" control={<Radio />} label="Female" />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel value="other" control={<Radio />} label="Other" />
+            <FormControlLabel
+              value="disabled"
+              disabled
+              control={<Radio />}
+              label="(Disabled option)"
+            />
+          </RadioGroup>
+        </FormControl> */}
             </Card>
         )
     }
 }
 
-export default Synth1;
+export default connect(mapStateToProps)(Synth1);
