@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Paper, Grid } from 'material-ui';
 import Card from 'material-ui/Card';
 import { Typography } from 'material-ui';
@@ -9,12 +10,14 @@ import Synth2 from './InterfaceSynths/Synth2';
 import Synth3 from './InterfaceSynths/Synth3';
 import Tone from 'tone';
 
+const mapStateToProps = state => ({
+    state
+});
+
 class Interface extends Component {
     constructor() {
         super()
         this.state = {
-            Synth1: Synth1,
-            Synth2: Synth2,
             tempo: 120,
             volume: 0
         }
@@ -28,11 +31,19 @@ class Interface extends Component {
         this.setState({
             tempo: value
         })
+        this.props.dispatch({
+            type: 'INTERFACE_MASTER_PARAMS',
+            payload: this.state
+        })
     }
     handleVolume = (value) => {
         Tone.Master.volume.rampTo(value)
         this.setState({
             volume: value
+        })
+        this.props.dispatch({
+            type: 'INTERFACE_MASTER_PARAMS',
+            payload: this.state
         })
     }
     render() {
@@ -83,4 +94,4 @@ class Interface extends Component {
     }
 }
 
-export default Interface;
+export default connect(mapStateToProps)(Interface);

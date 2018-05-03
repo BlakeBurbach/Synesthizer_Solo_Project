@@ -4,7 +4,11 @@ import Card, { CardContent } from 'material-ui/Card';
 import { Typography } from 'material-ui';
 import Tone from 'tone';
 import Knob from 'react-canvas-knob';
+import { connect } from 'react-redux';
 
+const mapStateToProps = state => ({
+    state
+});
 // create the drum synth object and connect it to the loop function
 let drumSynth = new Tone.MembraneSynth().toMaster();
 let loop = new Tone.Loop(function (time) {
@@ -28,8 +32,16 @@ class Synth2 extends Component {
         })
         if (this.state.looping === false) {
             loop.start();
+            this.props.dispatch({
+                type: 'SYNTH_TWO_PARAMS',
+                payload: this.state
+            })
         } else {
             loop.stop();
+            this.props.dispatch({
+                type: 'SYNTH_TWO_PARAMS',
+                payload: this.state
+            })
         } // end if
     } // end handleDrums
 
@@ -39,6 +51,10 @@ class Synth2 extends Component {
         this.setState({
             drumVolume: value
         }) // end setState
+        this.props.dispatch({
+            type: 'SYNTH_TWO_PARAMS',
+            payload: this.state
+        })
     } // end handleVolume
     render() {
         return (
@@ -58,4 +74,4 @@ class Synth2 extends Component {
     }
 }
 
-export default Synth2;
+export default connect(mapStateToProps)(Synth2);

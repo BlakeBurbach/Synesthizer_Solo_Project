@@ -42,7 +42,7 @@ class Synth1 extends Component {
                 synth.triggerAttackRelease(chord, "8n", time)
             }, "4n");
             this.props.dispatch({
-                type: 'SYNTH_ONE_STUFF',
+                type: 'SYNTH_ONE_PARAMS',
                 payload: this.state
             })
         } else {
@@ -54,7 +54,7 @@ class Synth1 extends Component {
             }, "4n");
             loop.start()
             this.props.dispatch({
-                type: 'SYNTH_ONE_STUFF',
+                type: 'SYNTH_ONE_PARAMS',
                 payload: this.state
             })
         }// end if
@@ -69,7 +69,7 @@ class Synth1 extends Component {
             delayTime: value
         })
         this.props.dispatch({
-            type: 'SYNTH_ONE_STUFF',
+            type: 'SYNTH_ONE_PARAMS',
             payload: this.state
         })
     } // end handleDelay
@@ -82,7 +82,7 @@ class Synth1 extends Component {
             volume: value
         }) // end setState
         this.props.dispatch({
-            type: 'SYNTH_ONE_STUFF',
+            type: 'SYNTH_ONE_PARAMS',
             payload: this.state
         })
     } // end handleVolume
