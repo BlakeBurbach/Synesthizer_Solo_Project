@@ -18,7 +18,7 @@ class ColorDisplay extends Component {
             <Card style={{ maxHeight: "300px", padding:"8px" }}>
                 <Paper>
                     <Typography variant="display4" style={{textAlign: "center"}}>
-                        {/* <P5Wrapper sketch={sketch} mapStateToProps={mapStateToProps}/> */}
+                        Sick Display Goes Here
                     </Typography>
                 </Paper>
                 <CardMedia src="/details/img/random_particles.jpg"/>  

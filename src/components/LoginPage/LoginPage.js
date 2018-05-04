@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import { Button, Typography, Card, Paper, Grid, TextField } from 'material-ui';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -55,7 +56,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -65,40 +66,47 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        { this.renderAlert() }
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-            <Link to="/register">Register</Link>
-          </div>
-        </form>
+        {this.renderAlert()}
+        <Grid container alignItems="center" direction="row" justify="center">
+          <Grid item xs={12}>
+            <Card xs={6} style={{display: "flex", flexWrap: "wrap"}}>
+              <form onSubmit={this.login}>
+                <Typography variant="display2" style={{ padding: "10px", textAlign: "center" }}>
+                  Login
+                </Typography>
+                    <TextField
+                      type="username"
+                      name="username"
+                      label="Username"
+                      placeholder="Username"
+                      value={this.state.username}
+                      onChange={this.handleInputChange}
+                    />
+                    <br />
+                  <TextField
+                    type="password"
+                    name="password"
+                    label="Password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                  />
+                <div style={{padding: "20px"}}>
+                  <Button
+                    type="submit"
+                    name="submit"
+                    value="Log In"
+                    variant="raised">
+                    Login
+                  </Button>
+                  <Button variant="raised" style={{ float: "right" }}>
+                    <Link to="/register" style={{ textDecoration: "none" }}>Register</Link>
+                  </Button>
+                </div>
+              </form>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     );
   }
