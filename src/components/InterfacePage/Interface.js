@@ -18,7 +18,7 @@ class Interface extends Component {
     constructor() {
         super()
         this.state = {
-            songTitle: '',
+            creationTitle: '',
             tempo: 120,
             volume: 0
         }
@@ -50,7 +50,7 @@ class Interface extends Component {
             payload: this.state
         })
     }
-    
+
     handleSaveClick = () => {
         this.props.dispatch({
             type: 'POST_ALL_SYNTH_PARAMS',

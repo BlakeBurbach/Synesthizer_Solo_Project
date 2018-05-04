@@ -50,7 +50,7 @@ function* deleteCreationObject(action){
 
 function* updateCreationTitle(action){
     try{
-        yield call(axios.put, `/api/creation/${action.payload._id}`, action.payload);
+        yield call(axios.put, `/api/creation/${action.payload._id}`, {master_control_params: {creationTitle: action.payload.master_control_params.creationTitle}});
         yield put({
             type: 'FETCH_ALL_CREATION_DATA'
         })

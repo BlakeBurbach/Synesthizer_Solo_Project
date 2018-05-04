@@ -33,7 +33,7 @@ class InfoPage extends Component {
   }
 
   updateCreationTitle = (creationObject) => {
-    console.log('clicking edit', creationObject._id);
+    console.log('clicking edit', creationObject._id, creationObject.master_control_params.creationTitle);
     this.props.dispatch({
       type: 'UPDATE_CREATION_TITLE', 
       payload: creationObject

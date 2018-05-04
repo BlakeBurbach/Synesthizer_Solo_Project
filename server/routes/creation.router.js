@@ -9,7 +9,7 @@ const creationSchema = new Schema({
     username: { type: String },
     synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: Array },
     synth2_params: { drumVolume: Number, looping: Boolean },
-    master_control_params: { songTile: String, tempo: Number, volume: Number }
+    master_control_params: { creationTitle: String, tempo: Number, volume: Number }
 })
 
 // the variable that will be used to declare new instances of the Creation schema
@@ -78,7 +78,7 @@ router.put('/:id', (req, res)=> {
     if(req.isAuthenticated()){
         const creationObjectId = req.params.id;
         const update = req.body;
-        Creation.findByIdAndUpdate(creationObjectId, {$push:{ creationTitle: update }}, {new: true}, (err, updatedCreationObject)=>{
+        Creation.findByIdAndUpdate(creationObjectId, update, {new: true}, (err, updatedCreationObject)=>{
             if(err){
                 console.log('ERROR creation PUT route', err);
                 res.sendStatus(500);
