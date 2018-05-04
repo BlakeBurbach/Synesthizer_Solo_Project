@@ -11,23 +11,24 @@ import Knob from 'react-canvas-knob';
 const mapStateToProps = state => ({
     state
 });
-//create the synth, delay, and loop objects
+//create the synth, delay, reverb, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
-// let gain = new Tone.Gain(0.5);
-// gain.toMaster();
+var reverb = new Tone.JCReverb(0, 0.7);
 let loop;
-//route delay to Master output and then connect delay to synth output chain 
+//route delay and reverb to Master output and then connect them to synth output chain 
 // that will go to master. 
+reverb.toMaster();
 delay.toMaster();
+synth.chain(delay, reverb);
 synth.volume.rampTo(-10);
-synth.connect(delay);
 
 class Synth1 extends Component {
     constructor() {
         super()
         this.state = {
             delayTime: 0,
+            roomSize: 0,
             volume: -10,
             looping: false,
             chord: []
@@ -77,6 +78,18 @@ class Synth1 extends Component {
         })
     } // end handleDelay
 
+    // onChange function to deal with reverb time value with a slider
+    handleReverb = (value) => {
+        reverb.roomSize.rampTo(value);
+        this.setState({
+            roomSize: value
+        })
+        this.props.dispatch({
+            type: 'SYNTH_ONE_PARAMS',
+            payload: this.state
+        })
+    } // end handleReverb
+
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         // console.log(synth)
@@ -103,6 +116,10 @@ class Synth1 extends Component {
                         Delay:
                     </Typography>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
+                    <Typography variant="title">
+                        Reverb:
+                    </Typography>
+                    <Slider min={0} max={0.7} step={0.01} value={this.state.roomSize} onChange={this.handleReverb} />
                     <Typography variant="title">
                         Volume:
                     </Typography>

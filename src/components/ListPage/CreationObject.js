@@ -46,17 +46,7 @@ class CreationObject extends Component {
     } // end handleEditTitle
     render() {
         let creationListObject;
-        if (this.props.creationObject.master_control_params.creationTitle === "") {
-            creationListObject = <div>
-                                <Typography variant="title">
-                                    Would you like to name this creation?
-                                </Typography>
-                                <TextField label="Title"/>
-                                <Button onClick={this.handleCreateTitleClick}>
-                                    <Edit />
-                                </Button>
-                            </div>
-        } else if (this.state.editingTitle) {
+        if (this.state.editingTitle) {
             creationListObject = <div>
                                 <Typography variant="title">
                                     Would you like to change the title?
