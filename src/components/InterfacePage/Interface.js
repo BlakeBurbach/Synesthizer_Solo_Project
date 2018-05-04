@@ -53,6 +53,7 @@ class Interface extends Component {
             payload: [
                 this.props.state.synthInterface.synth1,
                 this.props.state.synthInterface.synth2,
+                this.props.state.synthInterface.synth3,
                 this.props.state.synthInterface.interfaceMasterControl
             ]
         })

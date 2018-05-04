@@ -9,6 +9,7 @@ const creationSchema = new Schema({
     username: { type: String },
     synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: Array },
     synth2_params: { drumVolume: Number, looping: Boolean },
+    synth3_params: {note: String, looping: Boolean},
     master_control_params: { creationTitle: String, tempo: Number, volume: Number }
 })
 
@@ -23,8 +24,9 @@ router.post('/', (req, res) => {
         let username = req.user.username;
         let synth1_params = req.body[0];
         let synth2_params = req.body[1];
-        let master_control_params = req.body[2];
-        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, master_control_params});
+        let synth3_params = req.body[2];
+        let master_control_params = req.body[3];
+        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, synth3_params, master_control_params});
 
         creationToAdd.save((err, savedCreation) => {
             if (err) {

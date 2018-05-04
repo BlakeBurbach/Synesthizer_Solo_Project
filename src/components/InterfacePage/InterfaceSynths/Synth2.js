@@ -64,10 +64,12 @@ class Synth2 extends Component {
                         Synth 2
                     </Typography>
                 </CardContent>
+                <div  style={{ padding: "10px" }}>
                 <Typography variant="title">
                     Volume:
                 </Typography>
                 <Knob min={-60} max={10} step={1} value={this.state.drumVolume} onChange={this.handleVolume} />
+                </div>
                 <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
             </Card>
         )

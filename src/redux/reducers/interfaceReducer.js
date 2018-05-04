@@ -25,6 +25,18 @@ const synth2 = (state = {}, action) => {
   } // end switch
 } // end synth2 reducer
 
+// // synth3 reducer keeping track of synth3 state
+const synth3 = (state = {}, action) => {
+  switch (action.type) {
+    case 'SYNTH_THREE_PARAMS':
+      // console.log('SYNTH_THREE_PARAMS', action.payload)
+      // action.payload is the local state of synth2
+      return action.payload;
+    default:
+      return state;
+  } // end switch
+} // end synth3 reducer
+
 // interfaceMasterControl reducer keeping track of the interface global params
 const interfaceMasterControl = (state = {}, action) => {
   switch (action.type) {
@@ -50,6 +62,7 @@ const setupListPage = (state = [], action) => {
 export default combineReducers({
   synth1,
   synth2,
+  synth3,
   interfaceMasterControl,
   setupListPage
   // getAllSynthParams
