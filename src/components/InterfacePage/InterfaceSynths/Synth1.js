@@ -76,18 +76,6 @@ class Synth1 extends Component {
         })
     } // end handleDelay
 
-    // // onChange function to deal with reverb time value with a slider
-    // handleReverb = (value) => {
-    //     reverb.roomSize.rampTo(value);
-    //     this.setState({
-    //         roomSize: value
-    //     })
-    //     this.props.dispatch({
-    //         type: 'SYNTH_ONE_PARAMS',
-    //         payload: this.state
-    //     })
-    // } // end handleReverb
-
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         // console.log(synth)
@@ -114,10 +102,6 @@ class Synth1 extends Component {
                         Delay:
                     </Typography>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    {/* <Typography variant="title">
-                        Reverb:
-                    </Typography>
-                    <Slider min={0} max={0.7} step={0.01} value={this.state.roomSize} onChange={this.handleReverb} /> */}
                     <Typography variant="title">
                         Volume:
                     </Typography>

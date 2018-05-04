@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
     state
 });
 
+let chorus = new Tone.Chorus(4, 2.5, 0.5);
 let bassSynth = new Tone.FMSynth(
     {
         harmonicity: 3,
@@ -35,8 +36,11 @@ let bassSynth = new Tone.FMSynth(
             release: 0.5
         }
     }
-).toMaster(); // end bassSynth
+); // end bassSynth
 let loop;
+
+chorus.toMaster();
+bassSynth.connect(chorus);
 
 class Synth3 extends Component {
     constructor() {
@@ -44,6 +48,7 @@ class Synth3 extends Component {
         this.state = {
             note: '',
             volume: 0,
+            chorusModulation: 0,
             looping: false
         }
     }
@@ -77,6 +82,17 @@ class Synth3 extends Component {
         }// end if
     } // end triggerNote
 
+    handleChorus = (value) => {
+        chorus.frequency.rampTo(value);
+        this.setState({
+            chorusModulation: value
+        })
+        this.props.dispatch({
+            type: 'SYNTH_THREE_PARAMS',
+            payload: this.state
+        })
+    }
+
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         // console.log(synth)
@@ -98,7 +114,10 @@ class Synth3 extends Component {
                 </Typography>
                 </CardContent>
                 <div style={{ padding: "10px" }}>
-                    <Slider />
+                <Typography variant="title">
+                    Chorus:
+                </Typography>
+                    <Slider min={0} max={10} step={1} value={this.state.chorusModulation} onChange={this.handleChorus} />
                 <Typography variant="title">
                     Volume:
                 </Typography>
