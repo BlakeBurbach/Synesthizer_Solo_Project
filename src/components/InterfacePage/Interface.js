@@ -5,6 +5,7 @@ import { Typography } from 'material-ui';
 import ColorDisplay from './ColorDisplay/ColorDisplay';
 import Synth1 from './InterfaceSynths/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
+import Synth3 from './InterfaceSynths/Synth3';
 import Tone from 'tone';
 import MasterControlPanel from './InterfaceSynths/MasterControl';
 
@@ -72,7 +73,10 @@ class Interface extends Component {
                     <Grid item xs={3}>
                         <Synth2 />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={3}>
+                        <Synth3 />
+                    </Grid>
+                    <Grid item xs={3}>
                         <MasterControlPanel handleSaveClick={this.handleSaveClick}/>
                     </Grid>
                     <Grid item xs={12}>

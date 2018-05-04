@@ -14,10 +14,13 @@ const mapStateToProps = state => ({
 //create the synth, delay, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
+// let gain = new Tone.Gain(0.5);
+// gain.toMaster();
 let loop;
 //route delay to Master output and then connect delay to synth output chain 
 // that will go to master. 
 delay.toMaster();
+synth.volume.rampTo(-10);
 synth.connect(delay);
 
 class Synth1 extends Component {
@@ -25,7 +28,7 @@ class Synth1 extends Component {
         super()
         this.state = {
             delayTime: 0,
-            volume: -6,
+            volume: -10,
             looping: false,
             chord: []
         }
@@ -107,8 +110,8 @@ class Synth1 extends Component {
                 </div>
                 <Button variant="raised" onClick={() => this.handleChordChange(["C3", "E3", "G3", "B3"])}>CMaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>
-                <Button variant="raised" onClick={() => this.handleChordChange(["F3", "A3", "C4", "E4"])}>Fmaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["E3", "G3", "B4", "D4"])}>Emin7</Button>
+                <Button variant="raised" onClick={() => this.handleChordChange(["F3", "A3", "C4", "E4"])}>Fmaj7</Button>
             </Card>
         )
     }
