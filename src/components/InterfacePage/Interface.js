@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Paper, Grid } from 'material-ui';
-import Card from 'material-ui/Card';
+import { Paper, Grid } from 'material-ui';
 import { Typography } from 'material-ui';
-import Knob from 'react-canvas-knob';
 import ColorDisplay from './ColorDisplay/ColorDisplay';
 import Synth1 from './InterfaceSynths/Synth1';
 import Synth2 from './InterfaceSynths/Synth2';
-// import Synth3 from './InterfaceSynths/Synth3';
 import Tone from 'tone';
+import MasterControlPanel from './InterfaceSynths/MasterControl';
 
 const mapStateToProps = state => ({
     state
@@ -25,9 +23,6 @@ class Interface extends Component {
     }
     componentDidMount() {
         Tone.Transport.start();
-    }
-    componentDidUpdate() {
-        console.log(this.props.state.synthInterface)
     }
 
     handleTempo = (value) => {
@@ -77,31 +72,8 @@ class Interface extends Component {
                     <Grid item xs={3}>
                         <Synth2 />
                     </Grid>
-                    {/* <Grid item xs={3}>
-                        <Synth3 />
-                    </Grid> */}
                     <Grid item xs={12} sm={6}>
-                        <Card style={{ maxWidth: "300px", padding: "15px" }}>
-                            <Typography variant="headline">
-                                Master Control
-                            </Typography>
-                            <br />
-                            <Button variant="raised" onClick={this.handleSaveClick}>SAVE</Button>
-                            <hr />
-                            <br />
-                            <div style={{ float: "left" }}>
-                                <Typography variant="title">
-                                    Tempo:
-                            </Typography>
-                                <Knob min={60} max={180} step={1} value={this.state.tempo} onChange={this.handleTempo} />
-                            </div>
-                            <div style={{ float: "right" }}>
-                                <Typography variant="title">
-                                    Volume:
-                                </Typography>
-                                <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
-                            </div>
-                        </Card>
+                        <MasterControlPanel handleSaveClick={this.handleSaveClick}/>
                     </Grid>
                     <Grid item xs={12}>
                         <Paper>

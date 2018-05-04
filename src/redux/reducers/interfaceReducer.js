@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 const synth1 = (state = {}, action) => {
   switch (action.type) {
     case 'SYNTH_ONE_PARAMS':
-      console.log('SYNTH_ONE_PARAMS', action.payload)
+      // console.log('SYNTH_ONE_PARAMS', action.payload)
       // action.payload is the local state of synth1
       return action.payload;
     default:
@@ -17,7 +17,7 @@ const synth1 = (state = {}, action) => {
 const synth2 = (state = {}, action) => {
   switch (action.type) {
     case 'SYNTH_TWO_PARAMS':
-      console.log('SYNTH_TWO_PARAMS', action.payload)
+      // console.log('SYNTH_TWO_PARAMS', action.payload)
       // action.payload is the local state of synth2
       return action.payload;
     default:
@@ -29,7 +29,7 @@ const synth2 = (state = {}, action) => {
 const interfaceMasterControl = (state = {}, action) => {
   switch (action.type) {
     case 'INTERFACE_MASTER_PARAMS':
-      console.log('INTERFACE_MASTER_PARAMS', action.payload);
+      // console.log('INTERFACE_MASTER_PARAMS', action.payload);
       return action.payload
     default:
       return state;

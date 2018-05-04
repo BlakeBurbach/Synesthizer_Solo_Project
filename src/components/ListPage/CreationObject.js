@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Button, Typography, TextField, FormField } from 'material-ui';
+import { Grid, Button, Typography, TextField } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Delete, Edit } from 'material-ui-icons';
 
@@ -45,21 +45,19 @@ class CreationObject extends Component {
         })
     } // end handleEditTitle
     render() {
-        let creationTitle;
+        let creationListObject;
         if (this.props.creationObject.master_control_params.creationTitle === "") {
-            creationTitle = <div>
+            creationListObject = <div>
                                 <Typography variant="title">
                                     Would you like to name this creation?
                                 </Typography>
-                                <form  onSubmit={this.handleCreateTitle}>
-                                <TextField label="Title" value={this.state.creationTitle} onChange={this.handleTitleChange('creationTitle')}/>
-                                <Button type="submit">
+                                <TextField label="Title"/>
+                                <Button onClick={this.handleCreateTitleClick}>
                                     <Edit />
                                 </Button>
-                                </form>
                             </div>
         } else if (this.state.editingTitle) {
-            creationTitle = <div>
+            creationListObject = <div>
                                 <Typography variant="title">
                                     Would you like to change the title?
                                 </Typography>
@@ -72,7 +70,7 @@ class CreationObject extends Component {
                                 </Button>
                             </div>
         } else {
-            creationTitle = <div>
+            creationListObject = <div>
                             <Typography variant="title">
                                 Title: {this.props.creationObject.master_control_params.creationTitle}
                             </Typography>
@@ -88,7 +86,7 @@ class CreationObject extends Component {
             <Grid item xs={6} sm={12}>
                 <Card>
                     <CardContent>
-                        {creationTitle}
+                        {creationListObject}
                     </CardContent>
                 </Card>
             </Grid>
