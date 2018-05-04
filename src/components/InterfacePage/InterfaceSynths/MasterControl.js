@@ -58,9 +58,7 @@ class MasterControlPanel extends Component {
             <Typography variant="headline">
                 Master Control
             </Typography>
-            <br />
-            <TextField label="Title" value={this.state.creationTitle} onChange={this.createTitle('creationTitle')}/>
-            <br />
+            <TextField label="Title" value={this.state.creationTitle} onChange={this.createTitle('creationTitle')} style={{padding: "10px"}}/>
             <Button variant="raised" onClick={this.handleSaveClick}>SAVE</Button>
             <hr />
             <br />
