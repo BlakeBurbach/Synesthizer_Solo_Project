@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'material-ui';
+import { Button, Typography } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
-import { Typography } from 'material-ui';
 import Tone from 'tone';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -14,13 +13,13 @@ const mapStateToProps = state => ({
 //create the synth, delay, reverb, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
-var reverb = new Tone.JCReverb(0, 0.7);
+// var reverb = new Tone.JCReverb(0, 0.7);
 let loop;
 //route delay and reverb to Master output and then connect them to synth output chain 
 // that will go to master. 
-reverb.toMaster();
+// reverb.toMaster();
 delay.toMaster();
-synth.chain(delay, reverb);
+synth.chain(delay);
 synth.volume.rampTo(-10);
 
 class Synth1 extends Component {
@@ -28,7 +27,6 @@ class Synth1 extends Component {
         super()
         this.state = {
             delayTime: 0,
-            roomSize: 0,
             volume: -10,
             looping: false,
             chord: []
@@ -78,17 +76,17 @@ class Synth1 extends Component {
         })
     } // end handleDelay
 
-    // onChange function to deal with reverb time value with a slider
-    handleReverb = (value) => {
-        reverb.roomSize.rampTo(value);
-        this.setState({
-            roomSize: value
-        })
-        this.props.dispatch({
-            type: 'SYNTH_ONE_PARAMS',
-            payload: this.state
-        })
-    } // end handleReverb
+    // // onChange function to deal with reverb time value with a slider
+    // handleReverb = (value) => {
+    //     reverb.roomSize.rampTo(value);
+    //     this.setState({
+    //         roomSize: value
+    //     })
+    //     this.props.dispatch({
+    //         type: 'SYNTH_ONE_PARAMS',
+    //         payload: this.state
+    //     })
+    // } // end handleReverb
 
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
@@ -116,10 +114,10 @@ class Synth1 extends Component {
                         Delay:
                     </Typography>
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    <Typography variant="title">
+                    {/* <Typography variant="title">
                         Reverb:
                     </Typography>
-                    <Slider min={0} max={0.7} step={0.01} value={this.state.roomSize} onChange={this.handleReverb} />
+                    <Slider min={0} max={0.7} step={0.01} value={this.state.roomSize} onChange={this.handleReverb} /> */}
                     <Typography variant="title">
                         Volume:
                     </Typography>
