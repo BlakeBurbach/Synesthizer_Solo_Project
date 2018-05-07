@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card, { CardMedia } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-// import * as p5 from './p5.js';
-
-
+import ColorStream from './ColorStream';
 
 const mapStateToProps = state => ({
     state
@@ -15,14 +12,14 @@ class ColorDisplay extends Component {
 
     render() {
         return (
-            <Card style={{ maxHeight: "300px", padding:"8px" }}>
+            <div>
+            <Card>
                 <Paper>
-                    <Typography variant="display4" style={{textAlign: "center"}}>
-                        Sick Display Goes Here
-                    </Typography>
-                </Paper>
-                <CardMedia src="/details/img/random_particles.jpg"/>  
+                   
+                    <ColorStream />
+                </Paper> 
             </Card>
+            </div>
         )
     }
 }
