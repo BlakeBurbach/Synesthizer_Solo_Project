@@ -1,5 +1,6 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(145, 145, 145);
 }
 
 .instructions h1 {
@@ -14,7 +15,6 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
     width: 30%;
     height: 250px;
     margin: 20px auto;

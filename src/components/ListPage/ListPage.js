@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import { Grid } from 'material-ui';
+import { Grid, Card, Paper } from 'material-ui';
 import CreationObject from './CreationObject';
 
 import Nav from '../../components/Nav/Nav';
@@ -35,7 +35,7 @@ class InfoPage extends Component {
   updateCreationTitle = (creationObject) => {
     console.log('clicking edit', creationObject._id, creationObject.master_control_params.creationTitle);
     this.props.dispatch({
-      type: 'UPDATE_CREATION_TITLE', 
+      type: 'UPDATE_CREATION_TITLE',
       payload: creationObject
     })
   }
@@ -44,7 +44,7 @@ class InfoPage extends Component {
   render() {
 
     let creationListItems = this.props.state.synthInterface.setupListPage.map((creationObject) => {
-      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation} updateCreationTitle={this.updateCreationTitle}/>)
+      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation} updateCreationTitle={this.updateCreationTitle} />)
     })
     let content = null;
 
@@ -67,12 +67,14 @@ class InfoPage extends Component {
           {content}
         </div>
         <Nav />
-        <Typography variant="display2" style={{ textAlign: "center" }}>
-          List of Creations
+        <Paper>
+          <Typography variant="display2" style={{ textAlign: "center", padding: "20px" }}>
+            List of Creations
         </Typography>
-        <Grid container spacing={16} direction="column" justify="center" alignItems="center">
-          {creationListItems}
-        </Grid>
+          <Grid container spacing={16} direction="column" justify="center" alignItems="center">
+            {creationListItems}
+          </Grid>
+        </Paper>
       </div>
     );
   }
