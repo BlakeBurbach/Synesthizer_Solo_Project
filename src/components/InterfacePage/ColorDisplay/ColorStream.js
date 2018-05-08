@@ -5,8 +5,9 @@ import { withScreenSize } from '@vx/responsive';
 import { transpose } from 'd3-array';
 import { Spring } from 'react-spring';
 import { Stack } from '@vx/shape';
-import { PatternCircles, PatternWaves, PatternLines, PatternHexagons } from '@vx/pattern';
+import { PatternCircles, PatternWaves, PatternLines } from '@vx/pattern';
 import { scaleLinear, scaleOrdinal } from '@vx/scale';
+import { GradientPurpleTeal, GradientOrangeRed, GradientPinkBlue, GradientPurpleOrange, GradientLightgreenGreen } from '@vx/gradient';
 
 const mapStateToProps = state => ({
     state
@@ -44,9 +45,16 @@ function bump(a, n) {
   }
 }
 
+let purpleTeal = <GradientPurpleTeal id="purpleTeal"/>
+let orangeRed = <GradientOrangeRed id="orangeRed"/>
+let pinkBlue = <GradientPinkBlue id="pinkBlue"/>
+let purpleOrange = <GradientPurpleOrange id="purpleOrange" />
+let lightGreenGreen = <GradientLightgreenGreen id="lightGreenGreen"/>
+
+
 const zScale = scaleOrdinal({
   domain: keys,
-  range: ['#ff777f', '#580040', '#9cfaff', '#bc5399', '#c84653']
+  range: [`url(#purpleTeal)`, `url(#orangeRed)`, `url(#pinkBlue)`, `url(#purpleOrange)`, `url(#lightGreenGreen)`]
 })
 const patternScale = scaleOrdinal({
   domain: keys,
@@ -86,7 +94,7 @@ class App extends Component {
   state = { toggle: true }
   toggle = () => this.setState(state => ({ toggle: !state.toggle }))
   render() {
-    console.log(this.state.props)
+    console.log(this.props.state.synthInterface);
     const { screenWidth: width, screenHeight: height } = this.props
 
     const data = transpose(keys.map(d => bumps(samplesPerLayer, bumpsPerLayer)))
@@ -99,14 +107,20 @@ class App extends Component {
       range: [height, 0],
       domain: [-100, 50]
     })
-    let colorgraph;
     
+    //  GradientPurpleTeal, GradientOrangeRed, GradientPinkBlue, GradientPurpleOrange, GradientSteelPurple 
+    let purpleTeal = <GradientPurpleTeal id="purpleTeal"/>
     return (
       <div style={{ ...containerStyles }} onClick={this.toggle}>
         <svg width={width - 15} height={height}>
-          <PatternLines id="mustard" height={40} width={40} radius={5} stroke="#9cfaff" strokeWidth={1} complement orientation={['diagonal']} />
-          <PatternWaves id="cherry" height={12} width={12} fill="transparent" stroke="#d0ffff" complement />
-          <PatternCircles id="navy" height={60} width={60} radius={10} fill="#00f59f" complement />
+            <GradientPurpleTeal id="purpleTeal"/>
+            <GradientOrangeRed id="orangeRed"/>
+            <GradientPinkBlue id="pinkBlue"/>
+            <GradientPurpleOrange id="purpleOrange" />
+            <GradientLightgreenGreen id="lightGreenGreen"/>
+          <PatternLines id="mustard" height={40} width={40} radius={5} stroke={`url(#orangeRed)`} strokeWidth={1} complement orientation={['diagonal']} />
+          <PatternWaves id="cherry" height={12} width={12} fill={`url(#pinkBlue)`} stroke="#ffffff" complement />
+          <PatternCircles id="navy" height={60} width={60} radius={10} fill={`url(#purpleOrange)`} complement />
           <PatternLines id="transparent" height={60} width={60} size={10} stroke="transparent" strokeWidth={1} complement />
           <g onClick={event => this.forceUpdate()} onTouchStart={event => this.forceUpdate()}>
             <rect x={0} y={0} width={width} height={height} fill="#262226" />

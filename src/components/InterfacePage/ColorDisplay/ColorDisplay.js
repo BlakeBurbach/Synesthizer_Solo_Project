@@ -15,7 +15,6 @@ class ColorDisplay extends Component {
             <div>
             <Card>
                 <Paper>
-                   
                     <ColorStream />
                 </Paper> 
             </Card>

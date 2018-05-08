@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-import { Button, Typography, Card, Paper, Grid, TextField } from 'material-ui';
+import { Button, Typography, Card, Grid, TextField } from 'material-ui';
 
 const mapStateToProps = state => ({
   user: state.user,
