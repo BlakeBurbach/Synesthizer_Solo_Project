@@ -107,10 +107,13 @@ class Synth1 extends Component {
                     </Typography>
                     <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
+                <Button variant="raised" onClick={() => this.handleChordChange(["A3", "C3", "E4", "G4"])}>Amin7</Button>
+                <Button variant="raised" onClick={() => this.handleChordChange(["B3", "D3", "F#4", "A4"])}>Bmin7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["C3", "E3", "G3", "B3"])}>CMaj7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["D3", "F3", "A3", "C3"])}>Dmin7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["E3", "G3", "B4", "D4"])}>Emin7</Button>
                 <Button variant="raised" onClick={() => this.handleChordChange(["F3", "A3", "C4", "E4"])}>Fmaj7</Button>
+                <Button variant="raised" onClick={() => this.handleChordChange(["G3", "B3", "D4", "F#4"])}>Gmaj7</Button>
             </Card>
         )
     }
