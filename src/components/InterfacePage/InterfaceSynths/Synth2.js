@@ -65,12 +65,12 @@ class Synth2 extends Component {
 
     // onChange function to deal with delay time value with a slider
     handleDelay = (value) => {
-        delay.wet.rampTo(value);
+        delay.delayTime.rampTo(value);
         this.setState({
             delayTime: value
         })
         this.props.dispatch({
-            type: 'SYNTH_THREE_PARAMS',
+            type: 'SYNTH_TWO_PARAMS',
             payload: this.state
         })
     } // end handleDelay
@@ -86,7 +86,7 @@ class Synth2 extends Component {
                     <Typography variant="title">
                         Delay:
                     </Typography>
-                    <Slider min={0} max={100} step={1} value={this.state.delayTime} onChange={this.handleDelay} />
+                    <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
                     <Typography variant="title">
                         Volume:
                 </Typography>

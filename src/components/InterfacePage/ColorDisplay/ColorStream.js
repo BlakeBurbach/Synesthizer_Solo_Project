@@ -94,13 +94,10 @@ class App extends Component {
     state = { toggle: true }
     toggle = () => this.setState(state => ({ toggle: !state.toggle }))
     render() {
-        
-        
         let synth1 = this.props.state.synthInterface.synth1
         let synth2 = this.props.state.synthInterface.synth2
         let synth3 = this.props.state.synthInterface.synth3
 
-        
         const { screenWidth: width, screenHeight: height } = this.props
 
         const data = transpose(keys.map(d => bumps(samplesPerLayer, bumpsPerLayer)))
@@ -124,7 +121,7 @@ class App extends Component {
             </svg>
         } else {
             colorgraph = <svg width={width - 15} height={height}>
-                <GradientPurpleTeal id="purpleTeal" />
+            <GradientPurpleTeal id="purpleTeal" />
                 <GradientOrangeRed id="orangeRed" />
                 <GradientPinkBlue id="pinkBlue" />
                 <GradientPurpleOrange id="purpleOrange" />

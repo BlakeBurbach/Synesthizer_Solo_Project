@@ -13,37 +13,8 @@ const mapStateToProps = state => ({
 });
 
 class Interface extends Component {
-    constructor() {
-        super()
-        this.state = {
-            creationTitle: '',
-            tempo: 120,
-            volume: 0
-        }
-    }
     componentDidMount() {
         Tone.Transport.start();
-    }
-
-    handleTempo = (value) => {
-        Tone.Transport.bpm.rampTo(value);
-        this.setState({
-            tempo: value
-        })
-        this.props.dispatch({
-            type: 'INTERFACE_MASTER_PARAMS',
-            payload: this.state
-        })
-    }
-    handleVolume = (value) => {
-        Tone.Master.volume.rampTo(value)
-        this.setState({
-            volume: value
-        })
-        this.props.dispatch({
-            type: 'INTERFACE_MASTER_PARAMS',
-            payload: this.state
-        })
     }
 
     handleSaveClick = () => {
