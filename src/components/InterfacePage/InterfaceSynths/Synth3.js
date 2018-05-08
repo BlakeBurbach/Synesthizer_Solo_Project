@@ -123,10 +123,13 @@ class Synth3 extends Component {
                 </Typography>
                 <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
+                <Button variant="raised" onClick={() => this.triggerNote("A1")}>A</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("B1")}>B</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("C2")}>C</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("D2")}>D</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("E2")}>E</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("F2")}>F</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("G2")}>G</Button>
             </Card>
         )
     }

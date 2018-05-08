@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { Grid, Button, Typography, TextField } from 'material-ui';
+import { Grid, Button, Typography, TextField, Paper } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Delete, Edit } from 'material-ui-icons';
+import ColorStream from './ColorStreamList';
+import ColorStreamList from './ColorStreamList';
 
 
 class CreationObject extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             editingTitle: false
         }
     }
-    
+
     // click event to tell ListPage to fire off delete function to tell which object to delete
     handleDeleteClick = () => {
         this.props.deleteCreation(this.props.creationObject);
@@ -48,35 +50,42 @@ class CreationObject extends Component {
         let creationListObject;
         if (this.state.editingTitle) {
             creationListObject = <div>
-                                <Typography variant="title">
-                                    Would you like to change the title?
+                <Typography variant="title">
+                    Would you like to change the title?
                                 </Typography>
-                                <TextField label="Title"/>
-                                <Button onClick={this.handleCreateTitleClick}>
-                                    <Edit />
+                <TextField label="Title" />
+                <Button onClick={this.handleCreateTitleClick}>
+                    <Edit />
+                </Button>
+                <Button variant="raised" onClick={this.cancelEditTitle}>
+                    Cancel
                                 </Button>
-                                <Button variant="raised" onClick={this.cancelEditTitle}>
-                                    Cancel
-                                </Button>
-                            </div>
+            </div>
         } else {
             creationListObject = <div>
-                            <Typography variant="title">
-                                Title: {this.props.creationObject.master_control_params.creationTitle}
-                            </Typography>
-                            <Button onClick={this.handleDeleteClick}>
-                                <Delete />
-                            </Button>
-                            <Button onClick={this.handleEditClick}>
-                                <Edit />
-                            </Button>
-                            </div>
+                <Typography variant="title">
+                    Title: {this.props.creationObject.master_control_params.creationTitle}
+                </Typography>
+                <Button onClick={this.handleDeleteClick}>
+                    <Delete />
+                </Button>
+                <Button onClick={this.handleEditClick}>
+                    <Edit />
+                </Button>
+            </div>
         }
         return (
             <Grid item xs={6} sm={12}>
+                <Paper>
+                    <Card>
+                        <ColorStreamList />
+                    </Card>
+                </Paper>
                 <Card>
                     <CardContent>
-                        {creationListObject}
+                        <div>
+                            {creationListObject}
+                        </div>
                     </CardContent>
                 </Card>
             </Grid>
