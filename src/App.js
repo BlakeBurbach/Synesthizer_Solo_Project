@@ -5,17 +5,24 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import InterfacePage from './components/InterfacePage/InterfacePage';
 import ListPage from './components/ListPage/ListPage';
-
 import './styles/main.css';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+})
+
 
 const App = () => (
   <div>
+    <MuiThemeProvider theme={theme}>
     <Header title="Synesthizer" />
     <Router>
       <Switch>
@@ -42,6 +49,7 @@ const App = () => (
         />
       </Switch>
     </Router>
+    </MuiThemeProvider>
   </div>
 );
 

@@ -13,11 +13,9 @@ const mapStateToProps = state => ({
 //create the synth, delay, reverb, and loop objects
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
-// var reverb = new Tone.JCReverb(0, 0.7);
 let loop;
 //route delay and reverb to Master output and then connect them to synth output chain 
 // that will go to master. 
-// reverb.toMaster();
 delay.toMaster();
 synth.chain(delay);
 synth.volume.rampTo(-10);
@@ -60,7 +58,6 @@ class Synth1 extends Component {
                 payload: this.state
             })
         }// end if
-        // console.log(chord);
     }
 
 
@@ -78,7 +75,6 @@ class Synth1 extends Component {
 
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
-        // console.log(synth)
         synth.volume.rampTo(value);
         this.setState({
             volume: value
@@ -92,11 +88,6 @@ class Synth1 extends Component {
     render() {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
-                {/* <CardContent>
-                    <Typography variant="headline">
-                        Synth 1
-                    </Typography>
-                </CardContent> */}
                 <div style={{ padding: "10px" }}>
                     <Typography variant="title">
                         Delay:

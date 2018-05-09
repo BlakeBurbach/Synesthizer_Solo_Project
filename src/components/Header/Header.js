@@ -9,7 +9,7 @@ const Header = ({ title }) => (
   <div>
     <Card>
       <Paper>
-        <Typography variant="display3" gutterBottom style={{padding: "10px", backgroundColor: '#c9f7ff'}}>{title}</Typography>
+        <Typography variant="display3" gutterBottom style={{padding: "10px"}}>{title}</Typography>
       </Paper>
     </Card>
   </div>
