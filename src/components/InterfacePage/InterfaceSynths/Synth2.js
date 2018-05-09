@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Typography } from 'material-ui';
-import Card, { CardContent } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import Tone from 'tone';
 import Knob from 'react-canvas-knob';
 import Slider from 'rc-slider';
@@ -85,11 +85,6 @@ class Synth2 extends Component {
         }
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
-                {/* <CardContent>
-                    <Typography variant="headline">
-                        Synth 2
-                    </Typography>
-                </CardContent> */}
                 <div style={{ padding: "10px" }}>
                     <Typography variant="title">
                         Delay:

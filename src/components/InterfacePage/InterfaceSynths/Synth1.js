@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Typography } from 'material-ui';
-import Card, { CardContent } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import Tone from 'tone';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';

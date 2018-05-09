@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Typography } from 'material-ui';
-import Card, { CardContent } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Tone from 'tone';
@@ -108,11 +108,6 @@ class Synth3 extends Component {
     render() {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
-                {/* <CardContent>
-                    <Typography variant="headline">
-                        Synth 3
-                </Typography>
-                </CardContent> */}
                 <div style={{ padding: "10px" }}>
                 <Typography variant="title">
                     Chorus:
