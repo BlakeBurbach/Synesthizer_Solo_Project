@@ -15,9 +15,10 @@ body {
 }
 
 form {
-    width: 30%;
+    text-align: center;
+    width: 250px;
     height: 250px;
-    margin: 20px auto;
+    margin: 20px;
     padding: 25px;
     border-radius: 2px;
 }
