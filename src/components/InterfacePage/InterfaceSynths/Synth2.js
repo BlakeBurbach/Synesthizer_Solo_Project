@@ -26,7 +26,8 @@ class Synth2 extends Component {
         this.state = {
             drumVolume: 0,
             delayTime: 0,
-            looping: false
+            looping: false, 
+            clicked: false
         }
     }
     componentDidMount() {
@@ -34,7 +35,8 @@ class Synth2 extends Component {
     // onClick function to tell the drum loop to start or stop based on if looping is true or false
     handleDrums = () => {
         this.setState({
-            looping: !this.state.looping
+            looping: !this.state.looping,
+            clicked: !this.state.clicked
         })
         if (this.state.looping === false) {
             loop.start();
@@ -75,13 +77,19 @@ class Synth2 extends Component {
         })
     } // end handleDelay
     render() {
+        let coolButton;
+        if(this.state.clicked){
+            coolButton = <Button color="primary" variant="raised" onClick={this.handleDrums}>Drums</Button>
+        } else {
+            coolButton = <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
+        }
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
-                <CardContent>
+                {/* <CardContent>
                     <Typography variant="headline">
                         Synth 2
                     </Typography>
-                </CardContent>
+                </CardContent> */}
                 <div style={{ padding: "10px" }}>
                     <Typography variant="title">
                         Delay:
@@ -92,7 +100,8 @@ class Synth2 extends Component {
                 </Typography>
                     <Knob min={-60} max={10} step={1} value={this.state.drumVolume} onChange={this.handleVolume} />
                 </div>
-                <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
+                {coolButton}
+                {/* <Button variant="raised" onClick={this.handleDrums}>Drums</Button> */}
             </Card>
         )
     }

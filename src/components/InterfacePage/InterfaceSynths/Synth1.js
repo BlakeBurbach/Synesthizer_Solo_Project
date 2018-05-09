@@ -92,11 +92,11 @@ class Synth1 extends Component {
     render() {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
-                <CardContent>
+                {/* <CardContent>
                     <Typography variant="headline">
                         Synth 1
                     </Typography>
-                </CardContent>
+                </CardContent> */}
                 <div style={{ padding: "10px" }}>
                     <Typography variant="title">
                         Delay:
