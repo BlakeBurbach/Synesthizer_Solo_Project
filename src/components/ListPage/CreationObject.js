@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Button, Typography, TextField, Paper } from 'material-ui';
+import { Grid, Button, Typography, TextField, Paper, IconButton } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
-import { Delete, Edit } from 'material-ui-icons';
+import { Delete, Edit, Cancel } from 'material-ui-icons';
 import ColorStreamList from './ColorStreamList';
 
 
@@ -21,12 +21,12 @@ class CreationObject extends Component {
         this.props.deleteCreation(this.props.creationObject);
     } // end handleDeleteClick
 
-    // function to watch for any changes to this.state.creationTitle and change it accordingly
+    // function to watch for any changes to this.state.creationTitle by way of input field
     handleTitleChange = (event) => {
         this.setState({
             creationTitle: event.target.value
-        });
-    }
+        }); // end setState
+    } // end handleTitleChange
 
     // click event to tell ListPage to fire off the updateCreationTitle function to give the object a title
     handleCreateTitleClick = (event) => {
@@ -54,19 +54,17 @@ class CreationObject extends Component {
         // if this is true, give them an input, an edit button to save change, or a cancel button
         if (this.state.editingTitle) {
             creationListObject = <div>
-                <Typography variant="title">
+                <Typography variant="headline" style={{float: "left"}}>
                     Would you like to change the title?
                 </Typography>
                 <form onSubmit={this.handleCreateTitleClick}>
                 <TextField label="Title" value={this.state.creationTitle} onChange={this.handleTitleChange}/>
-                <div>
-                <Button type="submit">
+                <Button variant="fab" type="submit" style={{float: "right"}}>
                     <Edit />
                 </Button>
-                <Button variant="raised" onClick={this.cancelEditTitle}>
-                    Cancel
+                <Button variant="fab" onClick={this.cancelEditTitle} style={{float: "right"}}>
+                    <Cancel />
                 </Button>
-                </div>
                 </form>
             </div>
             // if false, just show the default creation object.
@@ -74,14 +72,14 @@ class CreationObject extends Component {
             // to delete the creation object.
         } else {
             creationListObject = <div>
-                <Typography variant="title">
-                    Title: {this.props.creationObject.master_control_params.creationTitle}
+                <div>
+                <Typography variant="display1" style={{float: "left", padding: "8px"}}>
+                    {this.props.creationObject.master_control_params.creationTitle}
                 </Typography>
-                <div style={{ float: "right" }}>
-                <Button onClick={this.handleDeleteClick}>
+                <Button onClick={this.handleDeleteClick} style={{float: "right"}}>
                     <Delete />
                 </Button>
-                <Button onClick={this.handleEditClick}>
+                <Button onClick={this.handleEditClick} style={{float: "right"}}>
                     <Edit />
                 </Button>
                 </div>

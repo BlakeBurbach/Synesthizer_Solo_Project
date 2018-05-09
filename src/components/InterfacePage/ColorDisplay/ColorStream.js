@@ -50,18 +50,15 @@ let orangeRed = <GradientOrangeRed id="orangeRed" />
 let pinkBlue = <GradientPinkBlue id="pinkBlue" />
 let purpleOrange = <GradientPurpleOrange id="purpleOrange" />
 let lightGreenGreen = <GradientLightgreenGreen id="lightGreenGreen" />
+let colors = [`url(#purpleTeal)`, `url(#orangeRed)`, `url(#pinkBlue)`, `url(#purpleOrange)`, `url(#lightGreenGreen)`];
 
 
-const zScale = scaleOrdinal({
-    domain: keys,
-    range: [`url(#purpleTeal)`, `url(#orangeRed)`, `url(#pinkBlue)`, `url(#purpleOrange)`, `url(#lightGreenGreen)`]
-})
 const patternScale = scaleOrdinal({
     domain: keys,
     range: ['mustard', 'cherry', 'navy', 'transparent', 'transparent', 'transparent', 'transparent']
 })
 
-const Graph = ({ data, xScale, yScale }) => (
+const Graph = ({ data, xScale, yScale, zScale }) => (
     <Stack
         curve={curveBasis}
         data={data}
@@ -91,7 +88,49 @@ const Graph = ({ data, xScale, yScale }) => (
 )
 
 class App extends Component {
-    state = { toggle: true }
+
+    constructor(props) {
+        super(props);
+        this.state = { toggle: true }
+        this.interval;
+        this.colorIndex = 0;
+    }
+
+    componentDidMount() {
+        //this.interval = setInterval(this.updateGraph, 1000);
+        //let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
+        //this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+    }
+
+    updateTempo(tempo, colorIndex) {
+        if(tempo) {
+            console.log(tempo, colorIndex);
+            clearInterval(this.interval);
+            // colorIndex / 120 will be between 0 - 1
+            this.colorIndex = Math.floor((colors.length - 1) * (colorIndex / 120));
+            console.log('NEW COLOR INDEX', this.tick);
+            this.interval = setInterval(this.updateGraph, tempo);
+        }
+
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('NEXT PROPS', nextProps);
+        // colorIndex will be between 0 and 120
+        let colorIndex = (nextProps.state.synthInterface.interfaceMasterControl.tempo - 60)
+        this.updateTempo(60000 / nextProps.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+        return true;
+    }
+
+    updateGraph = () => {
+        //console.log('do something');
+        this.setState({toggle: !this.state.toggle});
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+    
     toggle = () => this.setState(state => ({ toggle: !state.toggle }))
     render() {
         let synth1 = this.props.state.synthInterface.synth1
@@ -110,13 +149,18 @@ class App extends Component {
             range: [height, 0],
             domain: [-100, 50]
         })
+
+        const zScale = scaleOrdinal({
+            domain: keys,
+            range: [colors[this.colorIndex]]
+        });
         let colorgraph;
 
         if (synth1.looping == undefined && synth2.looping == undefined && synth3.looping == undefined) {
             colorgraph = <svg width={width - 15} height={height}>
-                <g onClick={event => this.forceUpdate()} onTouchStart={event => this.forceUpdate()}>
+                <g >
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
-                    <Graph data={data} xScale={xScale} yScale={yScale} />
+                    <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
             </svg>
         } else {
@@ -130,9 +174,9 @@ class App extends Component {
                 <PatternWaves id="cherry" height={12} width={12} fill={`url(#pinkBlue)`} stroke="#ffffff" complement />
                 <PatternCircles id="navy" height={60} width={60} radius={10} fill={`url(#purpleOrange)`} complement />
                 <PatternLines id="transparent" height={60} width={60} size={10} stroke="transparent" strokeWidth={1} complement />
-                <g onClick={event => this.forceUpdate()} onTouchStart={event => this.forceUpdate()}>
+                <g >
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
-                    <Graph data={data} xScale={xScale} yScale={yScale} />
+                    <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
             </svg>
         }
