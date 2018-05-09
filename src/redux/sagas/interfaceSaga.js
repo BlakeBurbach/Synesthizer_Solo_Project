@@ -49,14 +49,15 @@ function* deleteCreationObject(action){
 } // end deleteCreationObject
 
 function* updateCreationTitle(action){
-    try{
-        yield call(axios.put, `/api/creation/${action.payload._id}`, {master_control_params: {creationTitle: action.payload.master_control_params.creationTitle}});
-        yield put({
-            type: 'FETCH_ALL_CREATION_DATA'
-        })
-    } catch (error) {
-        console.log('updateCreationTitle ERROR', error);
-    }
+    yield console.log('updateCreationTitle SAGA', action.payload);
+    // try{
+    //      yield call(axios.put, `/api/creation/${action.payload._id}`, {master_control_params: {creationTitle: action.payload.master_control_params.creationTitle}});
+    //      yield put({
+    //          type: 'FETCH_ALL_CREATION_DATA'
+    //      })
+    // } catch (error) {
+    //     console.log('updateCreationTitle ERROR', error);
+    // }
 }
 
 export default interfaceSaga;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import { Grid, Card, Paper } from 'material-ui';
+import { Grid, Paper } from 'material-ui';
 import CreationObject from './CreationObject';
 
 import Nav from '../../components/Nav/Nav';
@@ -33,10 +33,13 @@ class InfoPage extends Component {
   }
 
   updateCreationTitle = (creationObject) => {
-    console.log('clicking edit', creationObject._id, creationObject.master_control_params.creationTitle);
+    console.log('clicking edit', creationObject._id, this.props.creationTitle);
     this.props.dispatch({
       type: 'UPDATE_CREATION_TITLE',
-      payload: creationObject
+      payload: {
+        id: creationObject._id,
+        newTitle: this.props.creationTitle
+      }
     })
   }
 
@@ -44,7 +47,11 @@ class InfoPage extends Component {
   render() {
 
     let creationListItems = this.props.state.synthInterface.setupListPage.map((creationObject) => {
-      return (<CreationObject key={creationObject._id} creationObject={creationObject} deleteCreation={this.deleteCreation} updateCreationTitle={this.updateCreationTitle} />)
+      return (<CreationObject
+        key={creationObject._id}
+        creationObject={creationObject}
+        deleteCreation={this.deleteCreation}
+        updateCreationTitle={this.updateCreationTitle} />)
     })
     let content = null;
 
@@ -70,7 +77,7 @@ class InfoPage extends Component {
         <Paper>
           <Typography variant="display2" style={{ textAlign: "center", padding: "20px" }}>
             List of Creations
-        </Typography>
+          </Typography>
           <Grid container spacing={16} direction="column" justify="center" alignItems="center">
             {creationListItems}
           </Grid>

@@ -70,7 +70,7 @@ class LoginPage extends Component {
         <Grid container alignItems="flex-start" direction="row" justify="center">
           <Grid item xs={6}>
             <Card style={{margin: "20px"}}>
-              <form onSubmit={this.login}>
+              <form className="loginForm" onSubmit={this.login}>
                 <Typography variant="display2" style={{ padding: "10px", textAlign: "center" }}>
                   Login
                 </Typography>

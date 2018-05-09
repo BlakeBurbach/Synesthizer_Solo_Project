@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Grid, Button, Typography, TextField, Paper } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Delete, Edit } from 'material-ui-icons';
-import ColorStream from './ColorStreamList';
 import ColorStreamList from './ColorStreamList';
 
 
 class CreationObject extends Component {
     constructor() {
         super()
+        // editingTitle will determine whether or not to show and give the user an input
+        // to change the title of a creation object or not
         this.state = {
-            editingTitle: false
+            editingTitle: false, 
+            creationTitle: '',
         }
     }
 
@@ -19,16 +21,17 @@ class CreationObject extends Component {
         this.props.deleteCreation(this.props.creationObject);
     } // end handleDeleteClick
 
-    handleTitleChange = creationTitle => (event) => {
+    // function to watch for any changes to this.state.creationTitle and change it accordingly
+    handleTitleChange = (event) => {
         this.setState({
             creationTitle: event.target.value
         });
     }
 
     // click event to tell ListPage to fire off the updateCreationTitle function to give the object a title
-    handleCreateTitle = (event) => {
+    handleCreateTitleClick = (event) => {
         event.preventDefault();
-        this.props.updateCreationTitle(this.props.creationObject, this.state.creationTitle);
+        this.props.updateCreationTitle(this.props.creationObject._id, this.state.creationTitle);
     } // end handleCreationTitleClick
 
     // click event to tell ListPage to fire off the updateCreationTitle function to update the object's title
@@ -37,7 +40,6 @@ class CreationObject extends Component {
         this.setState({
             editingTitle: true
         })
-        this.props.updateCreationTitle(this.props.creationObject);
     } // end handleEditClick
 
     // click event to change editingTitle back to false to cancel the update title request
@@ -48,42 +50,55 @@ class CreationObject extends Component {
     } // end handleEditTitle
     render() {
         let creationListObject;
+        // if statement to give the user an option to edit the title of each creation object.
+        // if this is true, give them an input, an edit button to save change, or a cancel button
         if (this.state.editingTitle) {
             creationListObject = <div>
                 <Typography variant="title">
                     Would you like to change the title?
-                                </Typography>
-                <TextField label="Title" />
-                <Button onClick={this.handleCreateTitleClick}>
+                </Typography>
+                <form onSubmit={this.handleCreateTitleClick}>
+                <TextField label="Title" value={this.state.creationTitle} onChange={this.handleTitleChange}/>
+                <div>
+                <Button type="submit">
                     <Edit />
                 </Button>
                 <Button variant="raised" onClick={this.cancelEditTitle}>
                     Cancel
-                                </Button>
+                </Button>
+                </div>
+                </form>
             </div>
+            // if false, just show the default creation object.
+            // Original title, edit button to give you the option to change title, and a delete button
+            // to delete the creation object.
         } else {
             creationListObject = <div>
                 <Typography variant="title">
                     Title: {this.props.creationObject.master_control_params.creationTitle}
                 </Typography>
+                <div style={{ float: "right" }}>
                 <Button onClick={this.handleDeleteClick}>
                     <Delete />
                 </Button>
                 <Button onClick={this.handleEditClick}>
                     <Edit />
                 </Button>
+                </div>
             </div>
         }
         return (
             <Grid item xs={6} sm={12}>
                 <Paper>
                     <Card>
+                        {/* ColorStreamList is a copy of the ColorStream graph from
+                        the interface */}
                         <ColorStreamList />
                     </Card>
                 </Paper>
                 <Card>
                     <CardContent>
-                        <div>
+                        <div style={{ textAlign: "center" }}>
                             {creationListObject}
                         </div>
                     </CardContent>
