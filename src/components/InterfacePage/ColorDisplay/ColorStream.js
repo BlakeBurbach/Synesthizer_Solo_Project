@@ -103,7 +103,7 @@ class App extends Component {
     }
 
     updateTempo(tempo, colorIndex) {
-        if(tempo) {
+        if (tempo) {
             console.log(tempo, colorIndex);
             clearInterval(this.interval);
             // colorIndex / 120 will be between 0 - 1
@@ -123,14 +123,13 @@ class App extends Component {
     }
 
     updateGraph = () => {
-        //console.log('do something');
-        this.setState({toggle: !this.state.toggle});
+        this.setState({ toggle: !this.state.toggle });
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-    
+
     toggle = () => this.setState(state => ({ toggle: !state.toggle }))
     render() {
         let synth1 = this.props.state.synthInterface.synth1
@@ -156,25 +155,32 @@ class App extends Component {
         });
         let colorgraph;
 
-        if (synth1.looping == undefined && synth2.looping == undefined && synth3.looping == undefined) {
+        if (synth1.looping === undefined && synth2.looping === undefined && synth3.looping === undefined) {
             colorgraph = <svg width={width - 15} height={height}>
-                <g >
+                <g>
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
                     <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
             </svg>
-        } else {
+        } else if (synth1.looping === false && synth2.looping === false && synth3.looping === false){
             colorgraph = <svg width={width - 15} height={height}>
-            <GradientPurpleTeal id="purpleTeal" />
+                <g>
+                    <rect x={0} y={0} width={width} height={height} fill="#262226" />
+                    <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
+                </g>
+            </svg>
+        }else {
+            colorgraph = <svg width={width - 15} height={height}>
+                <GradientPurpleTeal id="purpleTeal" />
                 <GradientOrangeRed id="orangeRed" />
                 <GradientPinkBlue id="pinkBlue" />
                 <GradientPurpleOrange id="purpleOrange" />
                 <GradientLightgreenGreen id="lightGreenGreen" />
                 <PatternLines id="mustard" height={40} width={40} radius={5} stroke={`url(#orangeRed)`} strokeWidth={1} complement orientation={['diagonal']} />
                 <PatternWaves id="cherry" height={12} width={12} fill={`url(#pinkBlue)`} stroke="#ffffff" complement />
-                <PatternCircles id="navy" height={60} width={60} radius={10} fill={`url(#purpleOrange)`} complement />
+                <PatternWaves id="navy" height={60} width={60} fill={`url(#purpleOrange)`} stroke={`url(#lightGreenGreen)`} complement />
                 <PatternLines id="transparent" height={60} width={60} size={10} stroke="transparent" strokeWidth={1} complement />
-                <g >
+                <g>
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
                     <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
@@ -182,7 +188,7 @@ class App extends Component {
         }
 
         return (
-            <div style={{ ...containerStyles }} onClick={this.toggle}>
+            <div style={{ ...containerStyles }}>
                 {colorgraph}
             </div>
         )
