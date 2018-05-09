@@ -69,7 +69,7 @@ class LoginPage extends Component {
         {this.renderAlert()}
         <Grid container alignItems="center" direction="row" justify="center">
           <Grid item xs={6}>
-            <Card xs={6}kl>
+            <Card xs={6}>
               <form onSubmit={this.login}>
                 <Typography variant="display2" style={{ padding: "10px", textAlign: "center" }}>
                   Login
