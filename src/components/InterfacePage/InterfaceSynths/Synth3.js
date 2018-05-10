@@ -53,9 +53,22 @@ class Synth3 extends Component {
         }
     }
 
+    // function to change the note being played by the bass and loop that note over
     triggerNote = (note) => {
+        // if it's looping, stop it
         if (this.state.looping) {
             loop.stop()
+            this.setState({
+                looping: !this.state.looping
+            })
+            // send the stopped looping value to redux state
+            this.props.dispatch({
+                type: 'SYNTH_THREE_PARAMS',
+                payload: {...this.state, looping: !this.state.looping}
+            }) // end dispatch
+        } else {
+            // if not looping, change the note to the button's chord value and start looping with
+            // that chord
             this.setState({
                 note: note,
                 looping: !this.state.looping
@@ -63,47 +76,39 @@ class Synth3 extends Component {
             loop = new Tone.Loop(function (time) {
                 bassSynth.triggerAttackRelease(note, "8n", time)
             }, "4n");
-            this.props.dispatch({
-                type: 'SYNTH_THREE_PARAMS',
-                payload: this.state
-            })
-        } else {
-            this.setState({
-                looping: !this.state.looping
-            })
-            loop = new Tone.Loop(function (time) {
-                bassSynth.triggerAttackRelease(note, "8n", time)
-            }, "4n");
             loop.start()
+            // send the note and the changed looping value to redux state
             this.props.dispatch({
                 type: 'SYNTH_THREE_PARAMS',
-                payload: this.state
-            })
-        }// end if
+                payload: {...this.state, note: note, looping: !this.state.looping}
+            }) // end dispatch
+        } // end if
     } // end triggerNote
 
+    // change the chorus's modulation value with the slider
     handleChorus = (value) => {
         chorus.frequency.rampTo(value);
         this.setState({
             chorusModulation: value
         })
+        // send chorus info to redux state
         this.props.dispatch({
             type: 'SYNTH_THREE_PARAMS',
-            payload: this.state
-        })
-    }
+            payload: {...this.state, chorusModulation: value}
+        }) // end dispatch
+    } // end handleChorus
 
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
-        // console.log(synth)
         bassSynth.volume.rampTo(value);
         this.setState({
             volume: value
         }) // end setState
+        // send volume value for synth2 to redux state
         this.props.dispatch({
             type: 'SYNTH_THREE_PARAMS',
-            payload: this.state
-        })
+            payload: {...this.state, volume: value}
+        }) // end dispatch
     } // end handleVolume
     render() {
         return (
