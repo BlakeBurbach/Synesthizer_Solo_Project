@@ -10,7 +10,7 @@ import Knob from 'react-canvas-knob';
 const mapStateToProps = state => ({
     state
 });
-
+// define the chorus and bassSynth components
 let chorus = new Tone.Chorus(4, 2.5, 0.5);
 let bassSynth = new Tone.FMSynth(
     {
@@ -39,6 +39,8 @@ let bassSynth = new Tone.FMSynth(
 ); // end bassSynth
 let loop;
 
+// connect chorus to master output. Connect it to bassSynth's output so whatever is output
+// from bassSynth goes through the chorus and then to master output
 chorus.toMaster();
 bassSynth.connect(chorus);
 
@@ -57,10 +59,10 @@ class Synth3 extends Component {
     triggerNote = (note) => {
         // if it's looping, stop it
         if (this.state.looping) {
-            loop.stop()
+            loop.stop();
             this.setState({
                 looping: !this.state.looping
-            })
+            }); // end setState
             // send the stopped looping value to redux state
             this.props.dispatch({
                 type: 'SYNTH_THREE_PARAMS',
@@ -72,55 +74,55 @@ class Synth3 extends Component {
             this.setState({
                 note: note,
                 looping: !this.state.looping
-            })
+            }); // end setState
             loop = new Tone.Loop(function (time) {
                 bassSynth.triggerAttackRelease(note, "8n", time)
             }, "4n");
-            loop.start()
+            loop.start();
             // send the note and the changed looping value to redux state
             this.props.dispatch({
                 type: 'SYNTH_THREE_PARAMS',
                 payload: {...this.state, note: note, looping: !this.state.looping}
-            }) // end dispatch
+            }); // end dispatch
         } // end if
-    } // end triggerNote
+    }; // end triggerNote
 
     // change the chorus's modulation value with the slider
     handleChorus = (value) => {
         chorus.frequency.rampTo(value);
         this.setState({
             chorusModulation: value
-        })
+        }); // end setState
         // send chorus info to redux state
         this.props.dispatch({
             type: 'SYNTH_THREE_PARAMS',
             payload: {...this.state, chorusModulation: value}
-        }) // end dispatch
-    } // end handleChorus
+        }); // end dispatch
+    }; // end handleChorus
 
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         bassSynth.volume.rampTo(value);
         this.setState({
             volume: value
-        }) // end setState
+        }); // end setState
         // send volume value for synth2 to redux state
         this.props.dispatch({
             type: 'SYNTH_THREE_PARAMS',
             payload: {...this.state, volume: value}
-        }) // end dispatch
-    } // end handleVolume
+        }); // end dispatch
+    }; // end handleVolume
     render() {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
-                <Typography variant="title">
+                {/* <Typography variant="title">
                     Chorus:
-                </Typography>
+                </Typography> */}
                     <Slider min={0} max={10} step={1} value={this.state.chorusModulation} onChange={this.handleChorus} />
-                <Typography variant="title">
+                {/* <Typography variant="title">
                     Volume:
-                </Typography>
+                </Typography> */}
                 <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
                 <Button variant="raised" onClick={() => this.triggerNote("A1")}>A</Button>
