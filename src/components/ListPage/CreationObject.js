@@ -50,6 +50,7 @@ class CreationObject extends Component {
 
     // click event to tell ListPage to fire off the updateCreationTitle function to update the object's title
     handleEditClick = () => {
+        console.log('editing');
         // set editingTitle to true to access the input field to rename an object
         this.setState({
             editingTitle: true
@@ -58,6 +59,7 @@ class CreationObject extends Component {
 
     // click event to change editingTitle back to false to cancel the update title request
     cancelEditTitle = () => {
+        console.log('not editing');
         this.setState({
             editingTitle: false
         })
