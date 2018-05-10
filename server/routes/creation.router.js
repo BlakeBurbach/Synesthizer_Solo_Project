@@ -79,13 +79,13 @@ router.delete('/:id', (req, res)=> {
 router.put('/:id', (req, res)=> {
     if(req.isAuthenticated()){
         const creationObjectId = req.params.id;
-        const update = req.body;
-        Creation.findByIdAndUpdate(creationObjectId, {'$set':{'creations.$.master_control_params.0.creationTitle.0': update}}, {new: true}, (err, updatedCreationObject)=>{
+        const update = req.body.newTitle;
+        Creation.findByIdAndUpdate(creationObjectId, { $set:{ master_control_params: { creationTitle: update } } }, {new: true}, (err, updatedCreationObject)=>{
             if(err){
                 console.log('ERROR creation PUT route', err);
                 res.sendStatus(500);
             } else {
-                console.log('creation PUT route SUCCESS');
+                console.log('creation PUT route SUCCESS', updatedCreationObject);
                 res.sendStatus(200);
             } // end if error
         }); // end Creation.findByIdAndUpdate

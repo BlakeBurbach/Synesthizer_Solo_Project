@@ -30,10 +30,6 @@ class CreationObject extends Component {
         this.setState({
             creationTitle: event.target.value
         }); // end setState
-        this.props.dispatch({
-            type: 'UPDATE_CREATION_TITLE', 
-            payload: {...this.state, creationTitle: event.target.value }
-        })
     } // end handleTitleChange
 
     // click event to tell ListPage to fire off the updateCreationTitle function to give the object a title
@@ -46,6 +42,9 @@ class CreationObject extends Component {
             id: this.props.creationObject._id,
             newTitle: this.state.creationTitle
           }
+        })
+        this.setState({
+            editingTitle: false
         })
       }
 

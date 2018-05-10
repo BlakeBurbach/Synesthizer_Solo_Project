@@ -51,7 +51,7 @@ function* deleteCreationObject(action){
 function* updateCreationTitle(action){
     yield console.log('updateCreationTitle SAGA', action.payload);
     try{
-         yield call(axios.put, `/api/creation/${action.payload.id}`, action.payload.newTitle);
+         yield call(axios.put, `/api/creation/${action.payload.id}`, action.payload);
          yield put({
              type: 'FETCH_ALL_CREATION_DATA'
          })
