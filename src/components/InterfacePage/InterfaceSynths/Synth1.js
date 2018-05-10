@@ -92,13 +92,7 @@ class Synth1 extends Component {
         return (
             <Card style={{ maxWidth: "400px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
-                    {/* <Typography variant="title">
-                        Delay:
-                    </Typography> */}
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    {/* <Typography variant="title">
-                        Volume:
-                    </Typography> */}
                     <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
                 <Button variant="raised" onClick={() => this.handleChordChange(["A3", "C3", "E4", "G4"])}>bleep</Button>
