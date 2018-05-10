@@ -96,39 +96,39 @@ class App extends Component {
         this.colorIndex = 0;
     }
 
-    componentDidMount() {
-        //this.interval = setInterval(this.updateGraph, 1000);
-        //let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
-        //this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
-    }
+    // componentDidMount() {
+    //     //this.interval = setInterval(this.updateGraph, 1000);
+    //     //let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
+    //     //this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+    // }
 
-    updateTempo(tempo, colorIndex) {
-        if (tempo) {
-            console.log(tempo, colorIndex);
-            clearInterval(this.interval);
-            // colorIndex / 120 will be between 0 - 1
-            this.colorIndex = Math.floor((colors.length - 1) * (colorIndex / 120));
-            console.log('NEW COLOR INDEX', this.tick);
-            this.interval = setInterval(this.updateGraph, tempo);
-        }
+    // updateTempo(tempo, colorIndex) {
+    //     if (tempo) {
+    //         console.log(tempo, colorIndex);
+    //         clearInterval(this.interval);
+    //         // colorIndex / 120 will be between 0 - 1
+    //         this.colorIndex = Math.floor((colors.length - 1) * (colorIndex / 120));
+    //         console.log('NEW COLOR INDEX', this.tick);
+    //         this.interval = setInterval(this.updateGraph, tempo);
+    //     }
 
-    }
+    // }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('NEXT PROPS', nextProps);
-        // colorIndex will be between 0 and 120
-        let colorIndex = (nextProps.state.synthInterface.interfaceMasterControl.tempo - 60)
-        this.updateTempo(60000 / nextProps.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
-        return true;
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('NEXT PROPS', nextProps);
+    //     // colorIndex will be between 0 and 120
+    //     let colorIndex = (nextProps.state.synthInterface.interfaceMasterControl.tempo - 60)
+    //     this.updateTempo(60000 / nextProps.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+    //     return true;
+    // }
 
-    updateGraph = () => {
-        this.setState({ toggle: !this.state.toggle });
-    }
+    // updateGraph = () => {
+    //     this.setState({ toggle: !this.state.toggle });
+    // }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
 
     toggle = () => this.setState(state => ({ toggle: !state.toggle }))
     render() {

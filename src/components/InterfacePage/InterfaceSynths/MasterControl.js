@@ -23,7 +23,7 @@ class MasterControlPanel extends Component {
         })
         this.props.dispatch({
             type: 'INTERFACE_MASTER_PARAMS',
-            payload: this.state
+            payload: {...this.state, [creationTitle]: event.target.value}
         })
     }
 
@@ -34,7 +34,7 @@ class MasterControlPanel extends Component {
         })
         this.props.dispatch({
             type: 'INTERFACE_MASTER_PARAMS',
-            payload: this.state
+            payload: {...this.state, tempo: value}
         })
     }
     handleVolume = (value) => {
@@ -44,7 +44,7 @@ class MasterControlPanel extends Component {
         })
         this.props.dispatch({
             type: 'INTERFACE_MASTER_PARAMS',
-            payload: this.state
+            payload: {...this.state, volume: value}
         })
     }
 
