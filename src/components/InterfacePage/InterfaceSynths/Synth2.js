@@ -90,13 +90,13 @@ class Synth2 extends Component {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
-                    <Typography variant="title">
+                    {/* <Typography variant="title">
                         Delay:
-                    </Typography>
+                    </Typography> */}
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    <Typography variant="title">
+                    {/* <Typography variant="title">
                         Volume:
-                </Typography>
+                </Typography> */}
                     <Knob min={-60} max={10} step={1} value={this.state.drumVolume} onChange={this.handleVolume} />
                 </div>
                 {coolButton}
