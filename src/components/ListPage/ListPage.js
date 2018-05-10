@@ -16,9 +16,9 @@ const mapStateToProps = state => ({
 class InfoPage extends Component {
 
   componentDidMount() {
-    // if (!this.props.user.isLoading && this.props.user.userName === null) {
-    //   this.props.history.push('home');
-    // }
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
     this.props.dispatch({
       type: USER_ACTIONS.FETCH_USER && 'FETCH_ALL_CREATION_DATA'
     });

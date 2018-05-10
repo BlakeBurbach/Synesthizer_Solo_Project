@@ -30,23 +30,28 @@ class Synth1 extends Component {
             chord: []
         }
     }
-    
+    // function to watch which chord button is being pushed. Change the state chord to that button's
+    // chord value, and then update the loop to play the loop with that chord.
     handleChordChange = (chord) => {
+    // If the loop has already been started by another button, stop the loop, change the chord, 
+    // then start the loop back up with the new chord.
         if (this.state.looping) {
             loop.stop()
             this.setState({
-                chord: chord,
+                // chord: chord,
                 looping: !this.state.looping
             })
-            loop = new Tone.Loop(function (time) {
-                synth.triggerAttackRelease(chord, "8n", time)
-            }, "4n");
+            // loop = new Tone.Loop(function (time) {
+            //     synth.triggerAttackRelease(chord, "8n", time)
+            // }, "4n");
             this.props.dispatch({
                 type: 'SYNTH_ONE_PARAMS',
-                payload: this.state
+                payload: {...this.state, chord: chord, looping: !this.state.looping}
             })
+    // If not looping, start the loop with the new chord button that has been pushed
         } else {
             this.setState({
+                chord: chord,
                 looping: !this.state.looping
             })
             loop = new Tone.Loop(function (time) {
@@ -55,10 +60,10 @@ class Synth1 extends Component {
             loop.start()
             this.props.dispatch({
                 type: 'SYNTH_ONE_PARAMS',
-                payload: this.state
+                payload: {...this.state, chord: chord ,looping: !this.state.looping}
             })
         }// end if
-    }
+    } // end handleChordChange
 
 
     // onChange function to deal with delay time value with a slider
@@ -67,9 +72,10 @@ class Synth1 extends Component {
         this.setState({
             delayTime: value
         })
+        // dispatch the new delay value to redux state
         this.props.dispatch({
             type: 'SYNTH_ONE_PARAMS',
-            payload: this.state
+            payload: {...this.state, delayTime: value}
         })
     } // end handleDelay
 
@@ -81,7 +87,7 @@ class Synth1 extends Component {
         }) // end setState
         this.props.dispatch({
             type: 'SYNTH_ONE_PARAMS',
-            payload: this.state
+            payload: {...this.state, volume: value}
         })
     } // end handleVolume
 
