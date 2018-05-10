@@ -7,6 +7,8 @@ import Synth2 from './InterfaceSynths/Synth2';
 import Synth3 from './InterfaceSynths/Synth3';
 import Tone from 'tone';
 import MasterControlPanel from './InterfaceSynths/MasterControl';
+import './Interface.css';
+import swal from 'sweetalert';
 
 const mapStateToProps = state => ({
     state
@@ -26,6 +28,9 @@ class Interface extends Component {
                 this.props.state.synthInterface.synth3,
                 this.props.state.synthInterface.interfaceMasterControl
             ]
+        })
+        swal({
+            title: "Saved!",
         })
     }
     render() {
