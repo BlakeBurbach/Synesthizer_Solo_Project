@@ -38,7 +38,7 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <Typography variant="display1" style={{float: "left", paddingRight: "10px"}}>
+          <Typography variant="display1" style={{float: "left", paddingRight: "15px"}}>
             Welcome, { this.props.user.userName }!
           </Typography>
           <Button variant="raised" onClick={this.logout} style={{float: "right"}}>

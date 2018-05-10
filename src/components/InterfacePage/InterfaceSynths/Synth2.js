@@ -83,12 +83,12 @@ class Synth2 extends Component {
     render() {
         let coolButton;
         if(this.state.clicked){
-            coolButton = <Button color="primary" variant="raised" onClick={this.handleDrums}>Drums</Button>
+            coolButton = <Button color="primary" variant="raised" onClick={this.handleDrums}>dum</Button>
         } else {
-            coolButton = <Button variant="raised" onClick={this.handleDrums}>Drums</Button>
+            coolButton = <Button variant="raised" onClick={this.handleDrums}>dum</Button>
         }
         return (
-            <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
+            <Card style={{ maxWidth: "400px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
                     {/* <Typography variant="title">
                         Delay:

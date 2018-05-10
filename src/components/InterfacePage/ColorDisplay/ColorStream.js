@@ -97,9 +97,9 @@ class ColorGraph extends Component {
     }
 
     componentDidMount() {
-        //this.interval = setInterval(this.updateGraph, 1000);
-        //let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
-        //this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+        // this.interval = setInterval(this.updateGraph, this.props.state.synthInterface.interfaceMasterControl.tempo);
+        // let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
+        // this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
     }
 
     updateTempo(tempo, colorIndex) {
@@ -107,8 +107,8 @@ class ColorGraph extends Component {
             console.log(tempo, colorIndex);
             clearInterval(this.interval);
             // colorIndex / 120 will be between 0 - 1
-            this.colorIndex = Math.floor((colors.length - 1) * (colorIndex / 120));
-            console.log('NEW COLOR INDEX', this.tick);
+            this.colorIndex = Math.floor((colors.length) * (colorIndex / 120));
+            console.log('NEW COLOR INDEX', this.colorIndex);
             this.interval = setInterval(this.updateGraph, tempo);
         }
 

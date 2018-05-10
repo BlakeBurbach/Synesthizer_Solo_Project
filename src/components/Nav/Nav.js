@@ -9,14 +9,14 @@ const Nav = () => (
         <li>
           <Link to="/interface">
             <Typography variant="headline">
-              Interface
+              Create
           </Typography>
           </Link>
         </li>
         <li>
           <Link to="/list">
             <Typography variant="headline">
-              List Page
+              Saved
             </Typography>
           </Link>
         </li>

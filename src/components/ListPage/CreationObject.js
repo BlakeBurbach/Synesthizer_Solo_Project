@@ -59,12 +59,12 @@ class CreationObject extends Component {
                 </Typography>
                 <form onSubmit={this.handleCreateTitleClick}>
                 <TextField label="Title" value={this.state.creationTitle} onChange={this.handleTitleChange}/>
-                <Button variant="fab" type="submit" style={{float: "right"}}>
+                <IconButton variant="fab" type="submit" style={{float: "right"}}>
                     <Edit />
-                </Button>
-                <Button variant="fab" onClick={this.cancelEditTitle} style={{float: "right"}}>
+                </IconButton>
+                <IconButton onClick={this.cancelEditTitle} style={{float: "right"}}>
                     <Cancel />
-                </Button>
+                </IconButton>
                 </form>
             </div>
             // if false, just show the default creation object.
@@ -76,12 +76,12 @@ class CreationObject extends Component {
                 <Typography variant="display1" style={{float: "left", padding: "8px"}}>
                     {this.props.creationObject.master_control_params.creationTitle}
                 </Typography>
-                <Button onClick={this.handleDeleteClick} style={{float: "right"}}>
+                <IconButton onClick={this.handleDeleteClick} style={{float: "right"}}>
                     <Delete />
-                </Button>
-                <Button onClick={this.handleEditClick} style={{float: "right"}}>
+                </IconButton>
+                <IconButton onClick={this.handleEditClick} style={{float: "right"}}>
                     <Edit />
-                </Button>
+                </IconButton>
                 </div>
             </div>
         }

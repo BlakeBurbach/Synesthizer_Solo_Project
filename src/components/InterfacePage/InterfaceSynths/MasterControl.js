@@ -62,12 +62,12 @@ class MasterControlPanel extends Component {
 
     render(){
         return (
-            <Card style={{ maxWidth: "300px", padding: "15px" }}>
+            <Card style={{ maxWidth: "400px", padding: "15px" }}>
             {/* <Typography variant="headline">
                 Master Control
             </Typography> */}
             <TextField label="Title" value={this.state.creationTitle} onChange={this.createTitle('creationTitle')} style={{padding: "10px"}}/>
-            <Button variant="raised" onClick={this.handleSaveClick}>SAVE</Button>
+            <Button variant="raised" onClick={this.handleSaveClick} style={{float: "right"}}>SAVE</Button>
             <hr />
             <br />
             <div style={{ float: "left" }}>

@@ -114,7 +114,7 @@ class Synth3 extends Component {
     }; // end handleVolume
     render() {
         return (
-            <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
+            <Card style={{ maxWidth: "400px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
                 {/* <Typography variant="title">
                     Chorus:
@@ -125,13 +125,13 @@ class Synth3 extends Component {
                 </Typography> */}
                 <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
-                <Button variant="raised" onClick={() => this.triggerNote("A1")}>A</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("B1")}>B</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("C2")}>C</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("D2")}>D</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("E2")}>E</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("F2")}>F</Button>
-                <Button variant="raised" onClick={() => this.triggerNote("G2")}>G</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("A1")}>zim</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("B1")}>zama</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("C2")}>wamvu</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("D2")}>weee</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("E2")}>bumpf</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("F2")}>yorple</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("G2")}>tumba</Button>
             </Card>
         )
     }
