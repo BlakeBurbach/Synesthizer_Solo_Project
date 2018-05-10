@@ -17,6 +17,8 @@ let loop = new Tone.Loop(function (time) {
     drumSynth.triggerAttackRelease("C2", "2n", time);
 });
 
+// connect delay to master output. Connect it to drumSynth's output so whatever is output
+// from drumSynth goes through the delay and then to master output
 delay.toMaster();
 drumSynth.connect(delay);
 
@@ -30,51 +32,53 @@ class Synth2 extends Component {
             clicked: false
         }
     }
-    componentDidMount() {
-    }
     // onClick function to tell the drum loop to start or stop based on if looping is true or false
     handleDrums = () => {
         this.setState({
             looping: !this.state.looping,
             clicked: !this.state.clicked
-        })
+        }); // end setState
         if (this.state.looping === false) {
             loop.start();
+            // send updated looping value to redux state
             this.props.dispatch({
                 type: 'SYNTH_TWO_PARAMS',
                 payload: {...this.state, looping: !this.state.looping}
-            })
+            }); // end dispatch
         } else {
             loop.stop();
+            // send updated looping value to redux state
             this.props.dispatch({
                 type: 'SYNTH_TWO_PARAMS',
                 payload: {...this.state, looping: !this.state.looping}
-            })
+            }); // end dispatch
         } // end if
-    } // end handleDrums
+    }; // end handleDrums
 
     // dial onChange function to control the volume of the drum loop
     handleVolume = (value) => {
         drumSynth.volume.rampTo(value);
         this.setState({
             drumVolume: value
-        }) // end setState
+        }); // end setState
+        // send updated volume data to redux state as it changes
         this.props.dispatch({
             type: 'SYNTH_TWO_PARAMS',
             payload: {...this.state, drumVolume: value}
-        })
-    } // end handleVolume
+        }); // end dispatch
+    }; // end handleVolume
 
     // onChange function to deal with delay time value with a slider
     handleDelay = (value) => {
         delay.delayTime.rampTo(value);
         this.setState({
             delayTime: value
-        })
+        }); // end setState
+        // send updated delayTime to reduxState as it changes
         this.props.dispatch({
             type: 'SYNTH_TWO_PARAMS',
             payload: {...this.state, delayTime: value}
-        })
+        }); // end dispatch
     } // end handleDelay
     render() {
         let coolButton;

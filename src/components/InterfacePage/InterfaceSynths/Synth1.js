@@ -38,7 +38,6 @@ class Synth1 extends Component {
         if (this.state.looping) {
             loop.stop()
             this.setState({
-                // chord: chord,
                 looping: !this.state.looping
             }); // end setState
             // send updated chord and looping values to redux state
