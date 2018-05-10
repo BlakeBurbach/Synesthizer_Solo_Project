@@ -58,6 +58,7 @@ const patternScale = scaleOrdinal({
     range: ['mustard', 'cherry', 'navy', 'transparent', 'transparent', 'transparent', 'transparent']
 })
 
+// this is the graph that will be created and used inside of the app component below
 const Graph = ({ data, xScale, yScale, zScale }) => (
     <Stack
         curve={curveBasis}
@@ -87,7 +88,7 @@ const Graph = ({ data, xScale, yScale, zScale }) => (
     />
 )
 
-class App extends Component {
+class ColorGraph extends Component {
 
     constructor(props) {
         super(props);
@@ -140,5 +141,6 @@ class App extends Component {
     }
 }
 
-const ColorStream = withScreenSize(App);
+// rename ColorGraph to ColorStream to use with new screen dimensions
+const ColorStream = withScreenSize(ColorGraph);
 export default connect(mapStateToProps)(ColorStream);

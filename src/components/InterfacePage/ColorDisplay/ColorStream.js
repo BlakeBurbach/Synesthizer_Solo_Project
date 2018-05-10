@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 const containerStyles = {
     width: 1000,
-    height: 300,
+    height: 500,
     cursor: 'pointer'
 }
 
@@ -87,7 +87,7 @@ const Graph = ({ data, xScale, yScale, zScale }) => (
     />
 )
 
-class App extends Component {
+class ColorGraph extends Component {
 
     constructor(props) {
         super(props);
@@ -153,24 +153,27 @@ class App extends Component {
             domain: keys,
             range: [colors[this.colorIndex]]
         });
-        let colorgraph;
+        // 
+        let NewColorGraph;
 
+        // if any of the synth modules' looping is undefined or false, don't show the graph.
+        // On page load and after all synth's have stopped looping it should be blank.
         if (synth1.looping === undefined && synth2.looping === undefined && synth3.looping === undefined) {
-            colorgraph = <svg width={width - 15} height={height}>
+            NewColorGraph = <svg width={width - 15} height={height}>
                 <g>
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
                     <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
             </svg>
         } else if (synth1.looping === false && synth2.looping === false && synth3.looping === false){
-            colorgraph = <svg width={width - 15} height={height}>
+            NewColorGraph = <svg width={width - 15} height={height}>
                 <g>
                     <rect x={0} y={0} width={width} height={height} fill="#262226" />
                     <Graph data={data} xScale={xScale} yScale={yScale} zScale={zScale} />
                 </g>
             </svg>
         }else {
-            colorgraph = <svg width={width - 15} height={height}>
+            NewColorGraph = <svg width={width - 15} height={height}>
                 <GradientPurpleTeal id="purpleTeal" />
                 <GradientOrangeRed id="orangeRed" />
                 <GradientPinkBlue id="pinkBlue" />
@@ -189,11 +192,13 @@ class App extends Component {
 
         return (
             <div style={{ ...containerStyles }}>
-                {colorgraph}
+                {NewColorGraph}
             </div>
         )
     }
 }
 
-const ColorStream = withScreenSize(App);
+// Change ColorGraph to ColorStream, which will be our exported Component that contains everything in here to
+// use in ColorDisplay
+const ColorStream = withScreenSize(ColorGraph);
 export default connect(mapStateToProps)(ColorStream);
