@@ -28,8 +28,8 @@ class Synth1 extends Component {
             volume: -10,
             looping: false,
             chord: []
-        }
-    }
+        };
+    };
     // function to watch which chord button is being pushed. Change the state chord to that button's
     // chord value, and then update the loop to play the loop with that chord.
     handleChordChange = (chord) => {
@@ -40,20 +40,18 @@ class Synth1 extends Component {
             this.setState({
                 // chord: chord,
                 looping: !this.state.looping
-            })
-            // loop = new Tone.Loop(function (time) {
-            //     synth.triggerAttackRelease(chord, "8n", time)
-            // }, "4n");
+            }); // end setState
+            // send updated chord and looping values to redux state
             this.props.dispatch({
                 type: 'SYNTH_ONE_PARAMS',
                 payload: {...this.state, chord: chord, looping: !this.state.looping}
-            })
+            }); // end dispatch
     // If not looping, start the loop with the new chord button that has been pushed
         } else {
             this.setState({
                 chord: chord,
                 looping: !this.state.looping
-            })
+            }); // end setState
             loop = new Tone.Loop(function (time) {
                 synth.triggerAttackRelease(chord, "8n", time)
             }, "4n");
@@ -61,9 +59,9 @@ class Synth1 extends Component {
             this.props.dispatch({
                 type: 'SYNTH_ONE_PARAMS',
                 payload: {...this.state, chord: chord ,looping: !this.state.looping}
-            })
+            }); // end dispatch
         }// end if
-    } // end handleChordChange
+    }; // end handleChordChange
 
 
     // onChange function to deal with delay time value with a slider
@@ -71,37 +69,37 @@ class Synth1 extends Component {
         delay.delayTime.rampTo(value);
         this.setState({
             delayTime: value
-        })
+        }); // end setState
         // dispatch the new delay value to redux state
         this.props.dispatch({
             type: 'SYNTH_ONE_PARAMS',
             payload: {...this.state, delayTime: value}
-        })
-    } // end handleDelay
+        }); // end dispatch
+    }; // end handleDelay
 
     // onChange function to deal with volume of synth with a dial component
     handleVolume = (value) => {
         synth.volume.rampTo(value);
         this.setState({
             volume: value
-        }) // end setState
+        }); // end setState
         this.props.dispatch({
             type: 'SYNTH_ONE_PARAMS',
             payload: {...this.state, volume: value}
-        })
-    } // end handleVolume
+        }); // end dispatch
+    }; // end handleVolume
 
     render() {
         return (
             <Card style={{ maxWidth: "350px", padding: "15px" }} xs={3}>
                 <div style={{ padding: "10px" }}>
-                    <Typography variant="title">
+                    {/* <Typography variant="title">
                         Delay:
-                    </Typography>
+                    </Typography> */}
                     <Slider min={0} max={0.7} step={0.01} value={this.state.delayTime} onChange={this.handleDelay} />
-                    <Typography variant="title">
+                    {/* <Typography variant="title">
                         Volume:
-                    </Typography>
+                    </Typography> */}
                     <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
                 <Button variant="raised" onClick={() => this.handleChordChange(["A3", "C3", "E4", "G4"])}>Amin7</Button>
