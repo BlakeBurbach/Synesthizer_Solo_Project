@@ -4,6 +4,8 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Grid, Paper } from 'material-ui';
 import CreationObject from './CreationObject';
+import swal from 'sweetalert';
+import './ListPage.css';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -25,11 +27,27 @@ class InfoPage extends Component {
   }
 
   deleteCreation = (creationObject) => {
-    console.log('clicking delete', creationObject._id);
-    this.props.dispatch({
-      type: 'DELETE_CREATION_OBJECT',
-      payload: creationObject
+    swal({
+      title: "Are you sure?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+    .then((deleteCreation) => {
+      if (deleteCreation) {
+        swal({
+          title: "Deleted",
+        });
+        this.props.dispatch({
+          type: 'DELETE_CREATION_OBJECT',
+          payload: creationObject
+        })
+      } else {
+        swal({
+          title:"Saved"
+        });
+      }
+    });
   }
 
   render() {
