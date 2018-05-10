@@ -83,7 +83,7 @@ class Synth2 extends Component {
     render() {
         let coolButton;
         if(this.state.clicked){
-            coolButton = <Button color="primary" variant="raised" onClick={this.handleDrums}>dum</Button>
+            coolButton = <Button color="secondary" variant="raised" onClick={this.handleDrums}>dum</Button>
         } else {
             coolButton = <Button variant="raised" onClick={this.handleDrums}>dum</Button>
         }

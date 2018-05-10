@@ -66,12 +66,14 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+        <div style={{color: 'white'}}>
         {this.renderAlert()}
+        </div>
         <Grid container alignItems="flex-start" direction="row" justify="center">
           <Grid item xs={6}>
             <Card style={{margin: "20px"}}>
               <form className="loginForm" onSubmit={this.login}>
-                <Typography variant="display2" style={{ padding: "10px", textAlign: "center" }}>
+                <Typography variant="display2" color="secondary" style={{ padding: "10px", textAlign: "center" }}>
                   Login
                 </Typography>
                     <TextField
@@ -81,6 +83,7 @@ class LoginPage extends Component {
                       placeholder="Username"
                       value={this.state.username}
                       onChange={this.handleInputChange}
+                      color="secondary"
                     />
                     <br />
                   <TextField
@@ -90,16 +93,18 @@ class LoginPage extends Component {
                     placeholder="Password"
                     value={this.state.password}
                     onChange={this.handleInputChange}
+                    color="secondary"
                   />
                 <div style={{padding: "20px"}}>
                   <Button
                     type="submit"
                     name="submit"
                     value="Log In"
-                    variant="raised">
+                    variant="raised"
+                    color="secondary">
                     Login
                   </Button>
-                  <Button variant="raised" style={{ float: "right" }}>
+                  <Button variant="raised" style={{ float: "right" }} color="secondary">
                     <Link to="/register" style={{ textDecoration: "none" }}>Register</Link>
                   </Button>
                 </div>

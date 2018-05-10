@@ -12,10 +12,26 @@ import InterfacePage from './components/InterfacePage/InterfacePage';
 import ListPage from './components/ListPage/ListPage';
 import './styles/main.css';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import {grey, cyan, red} from 'material-ui/colors';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark'
+    type: 'dark',
+    primary: {
+      light: grey[800],
+      dark: grey[900],
+      main: grey[700],
+    },
+    secondary: {
+      light: cyan['A100'],
+      dark: cyan['A200'],
+      main: cyan[100],
+    },
+    error: {
+      light: red['A200'],
+      dark: red['A400'],
+      main: red[500],
+    },
   }
 })
 
