@@ -42,13 +42,13 @@ class Synth2 extends Component {
             loop.start();
             this.props.dispatch({
                 type: 'SYNTH_TWO_PARAMS',
-                payload: this.state
+                payload: {...this.state, looping: !this.state.looping}
             })
         } else {
             loop.stop();
             this.props.dispatch({
                 type: 'SYNTH_TWO_PARAMS',
-                payload: this.state
+                payload: {...this.state, looping: !this.state.looping}
             })
         } // end if
     } // end handleDrums
@@ -61,7 +61,7 @@ class Synth2 extends Component {
         }) // end setState
         this.props.dispatch({
             type: 'SYNTH_TWO_PARAMS',
-            payload: this.state
+            payload: {...this.state, drumVolume: value}
         })
     } // end handleVolume
 
@@ -73,7 +73,7 @@ class Synth2 extends Component {
         })
         this.props.dispatch({
             type: 'SYNTH_TWO_PARAMS',
-            payload: this.state
+            payload: {...this.state, delayTime: value}
         })
     } // end handleDelay
     render() {
