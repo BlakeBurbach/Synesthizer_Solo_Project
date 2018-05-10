@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 let synth = new Tone.PolySynth(4, Tone.Synth);
 let delay = new Tone.FeedbackDelay(0, 0.7);
 let loop;
-//route delay and reverb to Master output and then connect them to synth output chain 
+//route delay to Master output and then connect them to synth output chain 
 // that will go to master. 
 delay.toMaster();
 synth.chain(delay);
