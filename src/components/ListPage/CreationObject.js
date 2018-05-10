@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Grid, Button, Typography, TextField, Paper, IconButton } from 'material-ui';
 import Card, { CardContent } from 'material-ui/Card';
 import { Delete, Edit, Cancel } from 'material-ui-icons';
 import ColorStreamList from './ColorStreamList';
 
+const mapStateToProps = state => ({
+    state
+});
 
 class CreationObject extends Component {
     constructor() {
@@ -26,13 +30,24 @@ class CreationObject extends Component {
         this.setState({
             creationTitle: event.target.value
         }); // end setState
+        this.props.dispatch({
+            type: 'UPDATE_CREATION_TITLE', 
+            payload: {...this.state, creationTitle: event.target.value }
+        })
     } // end handleTitleChange
 
     // click event to tell ListPage to fire off the updateCreationTitle function to give the object a title
-    handleCreateTitleClick = (event) => {
+    updateCreationTitle = (event, creationTitle) => {
         event.preventDefault();
-        this.props.updateCreationTitle(this.props.creationObject._id, this.state.creationTitle);
-    } // end handleCreationTitleClick
+        console.log('clicking edit', this.props.creationObject._id, creationTitle);
+        this.props.dispatch({
+          type: 'UPDATE_CREATION_TITLE',
+          payload: {
+            id: this.props.creationObject._id,
+            newTitle: this.state.creationTitle
+          }
+        })
+      }
 
     // click event to tell ListPage to fire off the updateCreationTitle function to update the object's title
     handleEditClick = () => {
@@ -57,8 +72,8 @@ class CreationObject extends Component {
                 <Typography variant="headline" style={{float: "left"}}>
                     Would you like to change the title?
                 </Typography>
-                <form onSubmit={this.handleCreateTitleClick}>
-                <TextField label="Title" value={this.state.creationTitle} onChange={this.handleTitleChange}/>
+                <form onSubmit={this.updateCreationTitle}>
+                <TextField label="Title" color="secondary" value={this.state.creationTitle} onChange={this.handleTitleChange}/>
                 <IconButton variant="fab" type="submit" style={{float: "right"}}>
                     <Edit />
                 </IconButton>
@@ -106,4 +121,4 @@ class CreationObject extends Component {
     }
 }
 
-export default CreationObject;
+export default connect(mapStateToProps)(CreationObject);

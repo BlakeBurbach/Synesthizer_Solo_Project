@@ -80,7 +80,7 @@ router.put('/:id', (req, res)=> {
     if(req.isAuthenticated()){
         const creationObjectId = req.params.id;
         const update = req.body;
-        Creation.findByIdAndUpdate(creationObjectId, update, {new: true}, (err, updatedCreationObject)=>{
+        Creation.findByIdAndUpdate(creationObjectId, {'$set': {'master_control_params.creationTitle.': update }}, {new: true}, (err, updatedCreationObject)=>{
             if(err){
                 console.log('ERROR creation PUT route', err);
                 res.sendStatus(500);
