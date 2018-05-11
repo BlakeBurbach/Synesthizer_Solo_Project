@@ -119,7 +119,7 @@ class Synth3 extends Component {
                     <Slider min={0} max={10} step={1} value={this.state.chorusModulation} onChange={this.handleChorus} />
                 <Knob min={-60} max={10} step={1} value={this.state.volume} onChange={this.handleVolume} />
                 </div>
-                <Button variant="raised" onClick={() => this.triggerNote("A1")}>zim</Button>
+                <Button variant="raised" onClick={() => this.triggerNote("A1")}>zum</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("B1")}>zama</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("C2")}>wamvu</Button>
                 <Button variant="raised" onClick={() => this.triggerNote("D2")}>weee</Button>
