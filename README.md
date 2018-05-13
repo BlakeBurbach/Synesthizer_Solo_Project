@@ -3,7 +3,7 @@ Synesthesia is a rare phenomenon in where one of the body's senses involuntarily
 
 ## Quick Overview
 The app consists of four modules (Synth, Drum, Bass, and Master Control) that the user can manipulate to generate musical sound. Each one is left unlabeled to encourage intuitive exploration rather than overwhelming the user with a bunch of words.  Once sound is created, a visual display will be generated that will dance and change color based on the music being played.
-Interface (images/interface.png)
+Interface (images/Interface.png)
 
 ## Development Setup Instructions
 
