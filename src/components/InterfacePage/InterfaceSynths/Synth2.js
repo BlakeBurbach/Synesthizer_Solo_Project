@@ -21,12 +21,13 @@ let loop = new Tone.Loop(function (time) {
 // from drumSynth goes through the delay and then to master output
 delay.toMaster();
 drumSynth.connect(delay);
+drumSynth.volume.rampTo(-7);
 
 class Synth2 extends Component {
     constructor() {
         super();
         this.state = {
-            drumVolume: 0,
+            drumVolume: -7,
             delayTime: 0,
             looping: false, 
             clicked: false

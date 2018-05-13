@@ -48,6 +48,18 @@ const interfaceMasterControl = (state = {}, action) => {
   } // end switch
 } // end interfaceMasterControl reducer
 
+// reducer that will keep track of what color the display is showing
+const captureDisplayColor = (state = {}, action) => {
+  switch(action.type) {
+    case 'CAPTURE_DISPLAY_COLOR':
+    console.log('CAPTURE_DISPLAY_COLOR', action.payload);
+      return action.payload
+    default: 
+      return state;
+  } // end switch
+} // end captureDisplayColor reducer
+
+
 // setupListPage reducer will take in the creationObjectResponse data from the
 // fetchAllCreationData get request and control the state of the List Page of creations
 const setupListPage = (state = [], action) => {
@@ -64,6 +76,7 @@ export default combineReducers({
   synth2,
   synth3,
   interfaceMasterControl,
+  captureDisplayColor,
   setupListPage
   // getAllSynthParams
 })  

@@ -110,6 +110,10 @@ class ColorGraph extends Component {
             this.colorIndex = Math.floor((colors.length) * (colorIndex / 120));
             console.log('NEW COLOR INDEX', this.colorIndex);
             this.interval = setInterval(this.updateGraph, tempo);
+            this.props.dispatch({
+                type: 'CAPTURE_DISPLAY_COLOR',
+                payload: this.colorIndex
+            })
         }
 
     }

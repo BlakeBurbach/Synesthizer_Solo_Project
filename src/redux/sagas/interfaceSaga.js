@@ -10,7 +10,7 @@ function* interfaceSaga() {
 
 // Saga that handles axios POST route for sending all interface data to database
 function* postAllSynthParams(action) {
-    // yield console.log('postAllSynthParams', action.payload);
+    yield console.log('postAllSynthParams', action.payload);
     try {
         yield call(axios.post, '/api/creation', action.payload);
         yield put({

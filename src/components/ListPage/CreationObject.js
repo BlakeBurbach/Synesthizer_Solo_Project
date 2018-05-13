@@ -107,7 +107,7 @@ class CreationObject extends Component {
                     <Card>
                         {/* ColorStreamList is a copy of the ColorStream graph from
                         the interface */}
-                        <ColorStreamList />
+                        <ColorStreamList display_color={this.props.creationObject.display_color}/>
                     </Card>
                 </Paper>
                 <Card>
