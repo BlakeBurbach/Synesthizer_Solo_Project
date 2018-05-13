@@ -7,7 +7,7 @@ The app consists of four modules (Synth, Drum, Bass, and Master Control) that th
 
 Once the user has created a visual, they can then stop the music, name the creation, and save it. 
 On the Saved page, there is a list of all of the saved creations. They have the option of clicking the edit button to rename a creation or delete it.
-![List](images/List_Edit 2.png)
+![List](images/List_Edit.png)
 ## Development Setup Instructions
 
 * Run `npm install`
