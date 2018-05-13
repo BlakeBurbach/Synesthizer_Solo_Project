@@ -7,7 +7,15 @@ import { Spring } from 'react-spring';
 import { Stack } from '@vx/shape';
 import { PatternCircles, PatternWaves, PatternLines } from '@vx/pattern';
 import { scaleLinear, scaleOrdinal } from '@vx/scale';
-import { GradientPurpleTeal, GradientOrangeRed, GradientPinkBlue, GradientPurpleOrange, GradientLightgreenGreen } from '@vx/gradient';
+import { GradientPurpleTeal,
+        GradientOrangeRed,
+        GradientPinkBlue,
+        GradientPurpleOrange,
+        GradientLightgreenGreen,
+        GradientDarkgreenGreen,
+        GradientPinkRed,
+        GradientSteelPurple,
+        GradientTealBlue } from '@vx/gradient';
 
 const mapStateToProps = state => ({
     state
@@ -50,7 +58,20 @@ let orangeRed = <GradientOrangeRed id="orangeRed" />
 let pinkBlue = <GradientPinkBlue id="pinkBlue" />
 let purpleOrange = <GradientPurpleOrange id="purpleOrange" />
 let lightGreenGreen = <GradientLightgreenGreen id="lightGreenGreen" />
-let colors = [`url(#purpleTeal)`, `url(#orangeRed)`, `url(#pinkBlue)`, `url(#purpleOrange)`, `url(#lightGreenGreen)`];
+let darkGreenGreen = <GradientDarkgreenGreen id="darkGreenGreen"/>
+let pinkRed = <GradientPinkRed id="pinkRed"/>
+let steelPurple = <GradientSteelPurple id="steelPurple"/>
+let tealBlue = <GradientTealBlue id="tealBlue"/>
+
+let colors = [`url(#purpleTeal)`,
+ `url(#darkGreenGreen)`,
+  `url(#orangeRed)`,
+   `url(#pinkBlue)`,
+    `url(#steelPurple)`,
+    `url(#purpleOrange)`,
+    `url(#pinkRed)`,
+    `url(#lightGreenGreen)`,
+    `url(#tealBlue)`];
 
 
 const patternScale = scaleOrdinal({
@@ -126,6 +147,10 @@ class ColorGraph extends Component {
                 <GradientPinkBlue id="pinkBlue" />
                 <GradientPurpleOrange id="purpleOrange" />
                 <GradientLightgreenGreen id="lightGreenGreen" />
+                <GradientDarkgreenGreen id="darkGreenGreen"/>
+                <GradientPinkRed id="pinkRed"/>
+                <GradientSteelPurple id="steelPurple"/>
+                <GradientTealBlue id="tealBlue"/>
                 <PatternLines id="mustard" height={40} width={40} radius={5} stroke={`url(#orangeRed)`} strokeWidth={1} complement orientation={['diagonal']} />
                 <PatternWaves id="cherry" height={12} width={12} fill={`url(#pinkBlue)`} stroke="#ffffff" complement />
                 <PatternWaves id="navy" height={60} width={60} fill={`url(#purpleOrange)`} stroke={`url(#lightGreenGreen)`} complement />
