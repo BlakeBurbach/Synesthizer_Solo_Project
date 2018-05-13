@@ -15,7 +15,8 @@ import { GradientPurpleTeal,
         GradientDarkgreenGreen,
         GradientPinkRed,
         GradientSteelPurple,
-        GradientTealBlue } from '@vx/gradient';
+        GradientTealBlue,
+        LinearGradient } from '@vx/gradient';
 
 const mapStateToProps = state => ({
     state
