@@ -8,9 +8,9 @@ import { Stack } from '@vx/shape';
 import { PatternCircles, PatternWaves, PatternLines } from '@vx/pattern';
 import { scaleLinear, scaleOrdinal } from '@vx/scale';
 import { GradientPurpleTeal,
-     GradientOrangeRed,
-      GradientPinkBlue,
-       GradientPurpleOrange,
+        GradientOrangeRed,
+        GradientPinkBlue,
+        GradientPurpleOrange,
         GradientLightgreenGreen,
         GradientDarkgreenGreen,
         GradientPinkRed,
