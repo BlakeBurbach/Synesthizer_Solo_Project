@@ -7,11 +7,10 @@ const Schema = mongoose.Schema;
 const creationSchema = new Schema({
     user_id: { type: String, required: true },
     username: { type: String },
-    synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: Array },
+    synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: {chord: Array, colorNum: Number} },
     synth2_params: { drumVolume: Number, looping: Boolean },
     synth3_params: {note: String, looping: Boolean},
     master_control_params: { creationTitle: String, tempo: Number, volume: Number },
-    display_color: {type: Number}
 })
 
 // the variable that will be used to declare new instances of the Creation schema
@@ -27,8 +26,7 @@ router.post('/', (req, res) => {
         let synth2_params = req.body[1];
         let synth3_params = req.body[2];
         let master_control_params = req.body[3];
-        let display_color = req.body[4];
-        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, synth3_params, master_control_params, display_color});
+        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, synth3_params, master_control_params});
 
         creationToAdd.save((err, savedCreation) => {
             if (err) {

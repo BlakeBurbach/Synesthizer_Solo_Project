@@ -15,7 +15,8 @@ import { GradientPurpleTeal,
         GradientDarkgreenGreen,
         GradientPinkRed,
         GradientSteelPurple,
-        GradientTealBlue } from '@vx/gradient';
+        GradientTealBlue,
+        LinearGradient } from '@vx/gradient';
 
 const mapStateToProps = state => ({
     state
@@ -118,32 +119,18 @@ class ColorGraph extends Component {
     }
 
     componentDidMount() {
-        // this.interval = setInterval(this.updateGraph, this.props.state.synthInterface.interfaceMasterControl.tempo);
-        // let colorIndex = (this.props.state.synthInterface.interfaceMasterControl.tempo - 60)
-        // this.updateTempo(60000 / this.props.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
     }
 
     updateTempo(tempo, colorIndex) {
         if (tempo) {
-            console.log(tempo, colorIndex);
             clearInterval(this.interval);
-            // colorIndex / 120 will be between 0 - 1
-            this.colorIndex = Math.floor((colors.length) * (colorIndex / 120));
-            console.log('NEW COLOR INDEX', this.colorIndex);
             this.interval = setInterval(this.updateGraph, tempo);
-            this.props.dispatch({
-                type: 'CAPTURE_DISPLAY_COLOR',
-                payload: this.colorIndex
-            })
         }
 
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('NEXT PROPS', nextProps);
-        // colorIndex will be between 0 and 120
-        let colorIndex = (nextProps.state.synthInterface.interfaceMasterControl.tempo - 60)
-        this.updateTempo(60000 / nextProps.state.synthInterface.interfaceMasterControl.tempo, colorIndex)
+        this.updateTempo(60000 / nextProps.state.synthInterface.interfaceMasterControl.tempo)
         return true;
     }
 
@@ -173,10 +160,10 @@ class ColorGraph extends Component {
             range: [height, 0],
             domain: [-100, 50]
         })
-
+        // console.log(this.props.state.synthInterface.synth1.chord.colorNum)
         const zScale = scaleOrdinal({
             domain: keys,
-            range: [colors[this.colorIndex]]
+            range: [colors[synth1.chord.colorNum]]
         });
         // 
         let NewColorGraph;

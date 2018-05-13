@@ -138,7 +138,7 @@ class ColorGraph extends Component {
             range: [colors[this.props.display_color]]
         });
         
-        console.log(this.props.display_color);
+        // console.log(this.props.display_color);
         return (
             <div style={{ ...containerStyles }} onClick={this.toggle}>
                 <svg width={width - 15} height={height}>
