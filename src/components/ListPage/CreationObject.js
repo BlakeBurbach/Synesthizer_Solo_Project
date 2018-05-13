@@ -35,7 +35,7 @@ class CreationObject extends Component {
     // click event to tell ListPage to fire off the updateCreationTitle function to give the object a title
     updateCreationTitle = (event, creationTitle) => {
         event.preventDefault();
-        console.log('clicking edit', this.props.creationObject._id, creationTitle);
+        // console.log('clicking edit', this.props.creationObject._id, creationTitle);
         this.props.dispatch({
           type: 'UPDATE_CREATION_TITLE',
           payload: {
@@ -50,7 +50,7 @@ class CreationObject extends Component {
 
     // click event to tell ListPage to fire off the updateCreationTitle function to update the object's title
     handleEditClick = () => {
-        console.log('editing');
+        // console.log('editing');
         // set editingTitle to true to access the input field to rename an object
         this.setState({
             editingTitle: true
@@ -59,7 +59,7 @@ class CreationObject extends Component {
 
     // click event to change editingTitle back to false to cancel the update title request
     cancelEditTitle = () => {
-        console.log('not editing');
+        // console.log('not editing');
         this.setState({
             editingTitle: false
         })
@@ -107,7 +107,7 @@ class CreationObject extends Component {
                     <Card>
                         {/* ColorStreamList is a copy of the ColorStream graph from
                         the interface */}
-                        <ColorStreamList display_color={this.props.creationObject.display_color}/>
+                        <ColorStreamList display_color={this.props.creationObject.synth1_params.chord.colorNum}/>
                     </Card>
                 </Paper>
                 <Card>

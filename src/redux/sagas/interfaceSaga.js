@@ -10,7 +10,7 @@ function* interfaceSaga() {
 
 // Saga that handles axios POST route for sending all interface data to database
 function* postAllSynthParams(action) {
-    yield console.log('postAllSynthParams', action.payload);
+    // yield console.log('postAllSynthParams', action.payload);
     try {
         yield call(axios.post, '/api/creation', action.payload);
         yield put({
@@ -26,7 +26,7 @@ function* postAllSynthParams(action) {
 function* fetchAllCreationData(action){
     try {
         const creationResponseObjects = yield call(axios.get, '/api/creation');
-        yield console.log('creationResponseObjects', creationResponseObjects.data);
+        // yield console.log('creationResponseObjects', creationResponseObjects.data);
         yield put({
             type: 'SET_LIST_PAGE',
             payload: creationResponseObjects.data
@@ -49,7 +49,7 @@ function* deleteCreationObject(action){
 } // end deleteCreationObject
 
 function* updateCreationTitle(action){
-    yield console.log('updateCreationTitle SAGA', action.payload);
+    // yield console.log('updateCreationTitle SAGA', action.payload);
     try{
          yield call(axios.put, `/api/creation/${action.payload.id}`, action.payload);
          yield put({

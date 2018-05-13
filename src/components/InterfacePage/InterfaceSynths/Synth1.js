@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Typography } from 'material-ui';
+import { Button } from 'material-ui';
 import Card from 'material-ui/Card';
 import Tone from 'tone';
 import Slider from 'rc-slider';
@@ -27,9 +27,19 @@ class Synth1 extends Component {
             delayTime: 0,
             volume: -10,
             looping: false,
-            chord: []
+            chord: {
+                chord: [],
+                colorNum: 0
+            }
         };
     };
+    componentDidMount(){
+        this.props.dispatch({
+            type: "SYNTH_ONE_PARAMS",
+            payload: this.state.chord
+        })
+    }
+
     // function to watch which chord button is being pushed. Change the state chord to that button's
     // chord value, and then update the loop to play the loop with that chord.
     handleChordChange = (chordColor) => {
