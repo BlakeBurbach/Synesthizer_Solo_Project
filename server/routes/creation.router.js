@@ -10,7 +10,8 @@ const creationSchema = new Schema({
     synth1_params: { delayTime: Number, volume: Number, looping: Boolean, chord: Array },
     synth2_params: { drumVolume: Number, looping: Boolean },
     synth3_params: {note: String, looping: Boolean},
-    master_control_params: { creationTitle: String, tempo: Number, volume: Number }
+    master_control_params: { creationTitle: String, tempo: Number, volume: Number },
+    display_color: {type: Number}
 })
 
 // the variable that will be used to declare new instances of the Creation schema
@@ -26,7 +27,8 @@ router.post('/', (req, res) => {
         let synth2_params = req.body[1];
         let synth3_params = req.body[2];
         let master_control_params = req.body[3];
-        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, synth3_params, master_control_params});
+        let display_color = req.body[4];
+        let creationToAdd = new Creation({user_id, username, synth1_params, synth2_params, synth3_params, master_control_params, display_color});
 
         creationToAdd.save((err, savedCreation) => {
             if (err) {
