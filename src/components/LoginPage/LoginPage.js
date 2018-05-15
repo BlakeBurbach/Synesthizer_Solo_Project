@@ -66,36 +66,36 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <div style={{color: 'white'}}>
-        {this.renderAlert()}
+        <div style={{ color: 'white' }}>
+          {this.renderAlert()}
         </div>
         <Grid container alignItems="flex-start" direction="row" justify="center">
           <Grid item xs={6}>
-            <Card style={{margin: "20px"}}>
+            <Card style={{ margin: "20px" }}>
               <form className="loginForm" onSubmit={this.login}>
                 <Typography variant="display2" color="secondary" style={{ padding: "10px", textAlign: "center" }}>
                   Login
                 </Typography>
-                    <TextField
-                      type="username"
-                      name="username"
-                      label="Username"
-                      placeholder="Username"
-                      value={this.state.username}
-                      onChange={this.handleInputChange}
-                      color="secondary"
-                    />
-                    <br />
-                  <TextField
-                    type="password"
-                    name="password"
-                    label="Password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    color="secondary"
-                  />
-                <div style={{padding: "20px"}}>
+                <TextField
+                  type="username"
+                  name="username"
+                  label="Username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                  color="secondary"
+                />
+                <br />
+                <TextField
+                  type="password"
+                  name="password"
+                  label="Password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  color="secondary"
+                />
+                <div style={{ padding: "20px" }}>
                   <Button
                     type="submit"
                     name="submit"

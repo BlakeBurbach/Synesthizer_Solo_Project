@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Typography, Card, Grid, TextField } from 'material-ui';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -75,40 +76,50 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
-        {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Register"
-            />
-            <Link to="/home">Cancel</Link>
-          </div>
-        </form>
+        <div style={{ color: 'white' }}>
+          {this.renderAlert()}
+        </div>
+        <Grid container alignItems="flex-start" direction="row" justify="center">
+          <Grid item xs={6}>
+            <Card style={{ margin: "20px" }}>
+              <form className="loginForm" onSubmit={this.registerUser}>
+                <Typography variant="display2" color="secondary" style={{ padding: "10px", textAlign: "center" }}>
+                  Register User
+                </Typography>
+                <TextField
+                  type="text"
+                  name="username"
+                  label="username"
+                  placeholder="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                />
+                <br />
+                <TextField
+                  type="password"
+                  name="password"
+                  label="password"
+                  placeholder="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+                <div style={{ padding: "20px" }}>
+                  <Button
+                    type="submit"
+                    name="submit"
+                    value="Register"
+                    variant="raised"
+                    color="secondary">
+                    Submit
+                  </Button>
+                  <Button variant="raised" style={{ float: "right" }} color="secondary">
+                    <Link to="/home" style={{ textDecoration: "none" }}>Cancel</Link>
+                  </Button>
+                </div>
+              </form>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     );
   }
