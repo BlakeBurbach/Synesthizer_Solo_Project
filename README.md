@@ -32,4 +32,3 @@ On the Saved page, there is a list of all of the saved creations. They have the 
 
 * Add more synths and sound variation.
 * Add a sequencer element.
-* Change display's color on chord changes instead of tempo.
